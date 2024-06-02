@@ -1,0 +1,29 @@
+.main-container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr;
+  grid-template-rows:
+    0.4fr
+    1.8fr
+    0.2fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "nav nav"
+    "img form"
+    "footer footer";
+}
+.nav {
+  grid-area: nav;
+}
+.img {
+  grid-area: img;
+}
+.form {
+  grid-area: form;
+}
+.footer {
+  grid-area: footer;
+  border: 10px solid #8b865c;
+  background-color: #8b865c;
+  margin: 0px;
+}
