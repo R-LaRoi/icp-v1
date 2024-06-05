@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 import { useRouter } from "next/navigation";
 
 
-export const MainForm = (): React.ReactElement => {
+export const MainForm = (): React.ReactNode => {
 
 const router = useRouter()
 let [userInput, setUserInput] = useState({});
@@ -34,20 +34,22 @@ function formChange (event:any) {
 
 return(
 
-
  <div className="form m-16 ">
+ <h1 className = "font-light text-7xl h1-form">Get closer to your goal today.</h1>
+ <p className='text-2xl mt-5 p-2'>Let us help you plan ahead and take the
+ next step <br/> towards your new career.</p>
  <form onSubmit = {formSubmitted}
 
-  className="h-96 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <h1>Career Planning</h1>
+  className="h-96 bg-white rounded pb-5 mb-4">
+    
     <div className=" pt-10 mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
+      {/* <label className="block text-gray-700 text-sm font-bold mb-2" >
  Name
-      </label>
+      </label> */}
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
       id="username" 
       type="text" 
-      placeholder="Name"
+      placeholder="enter name"
       onChange={formChange} 
       required
       name= "userInput"
@@ -57,20 +59,20 @@ return(
       />
     </div>
     <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
+      {/* <label className="block text-gray-700 text-sm font-bold mb-2" >
     Email
-      </label>
-      <input className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" 
+      </label> */}
+      <input className="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" 
       type="email" 
       name = "email"
-      placeholder="@"
+      placeholder="enter email"
        onChange={formChange}
          required
               />
     
     </div>
     <div className="flex items-center justify-between">
-      <button className=" start-btn hover:bg-red-400 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline" type="submit" 
+      <button className="  start-btn bg-hover:stone-400 text-white font-bold py-2 px-8 focus:outline-none focus:shadow-outline" type="submit" 
     >
 GET STARTED
       </button>

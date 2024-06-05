@@ -1,7 +1,7 @@
 .main-container {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1.5fr 1.5fr;
+  grid-template-columns: 1fr 1.4fr;
   grid-template-rows:
     0.4fr
     1.8fr
@@ -11,15 +11,35 @@
     "nav nav"
     "img form"
     "footer footer";
+  font-family: Visby;
+
+  /* text-transform: uppercase; */
 }
 .nav {
+  margin: 0;
   grid-area: nav;
+  background-color: #2e2d2c;
+  height: 70px;
+  padding: 20px;
 }
 .img {
   grid-area: img;
 }
 .form {
   grid-area: form;
+  /* width: 60%; */
+}
+#username,
+#email {
+  width: 60%;
+  border: 1.5px solid #58563d;
+  border-radius: 20px;
+}
+.h1-form {
+  font-family: Visby-Bold;
+  color: #58563d;
+
+  /* letter-spacing: -5px; */
 }
 .footer {
   grid-area: footer;

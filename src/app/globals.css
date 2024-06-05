@@ -2,14 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Visby;
+  src: url(./Font/VisbyRegular.ttf);
+}
+
+@font-face {
+  font-family: Visby-Bold;
+  src: url(./Font/VisbyBold.ttf);
+}
+
 html,
 body {
+  font-family: ApercuReg;
   margin: 0;
   padding: 0;
 }
 
 .start-btn {
-  background: #d87355;
+  background: #58563d;
+  font-family: ApercuReg;
+  border-radius: 20px;
 }
 
 /* :root {
