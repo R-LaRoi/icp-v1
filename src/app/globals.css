@@ -25,6 +25,11 @@ body {
   border-radius: 20px;
 }
 
+.arrows {
+  background-color: #58563d;
+  border-radius: 10px;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
