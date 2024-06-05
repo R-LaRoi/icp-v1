@@ -21,6 +21,14 @@
   background-color: #2e2d2c;
   height: 70px;
   padding: 20px;
+  position: fixed;
+  width: 100vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.icp-article {
+  margin-top: 8rem;
 }
 .img {
   grid-area: img;
@@ -46,4 +54,13 @@
   border: 10px solid #8b865c;
   background-color: #8b865c;
   margin: 0px;
+}
+@media screen and (max-width: 990px) {
+  .main-container {
+    grid-template-columns: 1fr;
+
+    .h1-form {
+      font-size: 4rem;
+    }
+  }
 }

@@ -14,7 +14,7 @@ export const IcpHome = (): React.ReactNode =>
  return(
   <div className="main-container">
   <Navigation/>
-<article className=" mt-12">
+<article className="icp-article">
   <div className="img">
   {/* {mainImg} */}
   <Image src={imgimg}
@@ -24,7 +24,7 @@ export const IcpHome = (): React.ReactNode =>
         priority={true} />
   </div>
   </article>
-  <article className=" mt-12">
+  <article className="icp-article">
   <MainForm/>
   </article>
 <Footer />
