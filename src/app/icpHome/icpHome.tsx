@@ -1,3 +1,4 @@
+'useClient'
 import React from "react";
 import './icpHome.css'
 import {Navigation} from './nav'

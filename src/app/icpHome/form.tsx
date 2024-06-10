@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import './icpHome.css'
 import React, {useState} from 'react'
 import { useRouter } from "next/navigation";
@@ -48,14 +48,13 @@ return(
       </label> */}
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
       id="username" 
+      min={7}
       type="text" 
       placeholder="enter name"
       onChange={formChange} 
       required
-      name= "userInput"
- 
-      
-      
+      name="userInput"
+
       />
     </div>
     <div className="mb-6">

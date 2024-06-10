@@ -1,13 +1,31 @@
-'useClient'
+'use client'
 import React from "react";
 import { Navigation } from "../icpHome/nav";
 import Image from 'next/image'
 import sandy from './sandy.jpg'
+// import BtnQuestions from "./BtnQue";
+import {selfAssesmentQuestions} from './dataQuestions'
 
-export default function Questions () {
+export default function shoWQuestions () {
 
 
-  return(
+function handleBtn(){
+
+let qOne:any = selfAssesmentQuestions.map((item)=>{
+
+console.log(item.question)
+
+})
+return(
+
+  <h1>{qOne}</h1>
+)
+
+
+}
+
+
+return(
 <section>
  <Navigation />
  <section className="p-12">
@@ -19,20 +37,22 @@ export default function Questions () {
         alt="illustration"
         priority={true} />
 </div>
-
 <main>
-  <div className="form m-16 ">
+  <div className="form m-16 " >
  <h1 className = "font-light text-7xl text-stone-600">One step at a time.</h1>
  <p className='text-2xl mt-5 p-2'>Let's get started with a few questions about you.</p>
- <button className="arrows mx-2 mt-2 px-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12">
+
+{/* <BtnQuestions  submit={}/> */}
+<button className="arrows mx-2 mt-2 px-2" id="show-questions"
+ onClick={handleBtn}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-12">
   <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
 </svg>
-
 </button>
+
  </div>
 </main>
   </section>
   </section>
   )
- 
 }
