@@ -5,12 +5,11 @@ import { useRouter } from "next/navigation";
 
 
 export const MainForm = (): React.ReactNode => {
-
-const router = useRouter()
 let [userInput, setUserInput] = useState({});
 
 
  function formSubmitted (event:any)  {
+  const router = useRouter()
         event.preventDefault();
 
         const submitData = {

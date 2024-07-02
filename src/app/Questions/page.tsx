@@ -3,24 +3,17 @@ import React from "react";
 import { Navigation } from "../icpHome/nav";
 import Image from 'next/image'
 import sandy from './sandy.jpg'
-// import BtnQuestions from "./BtnQue";
-import {selfAssesmentQuestions} from './dataQuestions'
+import { useRouter } from "next/navigation";
+
+
 
 export default function shoWQuestions () {
+    const router = useRouter()
 
-
-function handleBtn(){
-
-let qOne:any = selfAssesmentQuestions.map((item)=>{
-
-console.log(item.question)
-
-})
-return(
-
-  <h1>{qOne}</h1>
-)
-
+    function handleBtn(event:any){
+    event.preventDefault();
+    router.push('/SelfQuest')
+    console.log('this')
 
 }
 
@@ -56,3 +49,4 @@ return(
   </section>
   )
 }
+
