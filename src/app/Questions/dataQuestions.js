@@ -16,6 +16,7 @@ export const selfAssesmentQuestions = [
   { id: 5, question: "List your concerns about your career." },
 
   { id: 6, question: "What is your preferred industry." },
+
   { id: 7, question: "what would be your dream accomplishment?" },
 
   {

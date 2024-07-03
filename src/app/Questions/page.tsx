@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
     const router = useRouter()
     function handleBtn(event:any){
     event.preventDefault();
-    router.push('/SelfAssesment')
+    router.push('/Questions/SelfAssesment')
     console.log('this')
 
 }
