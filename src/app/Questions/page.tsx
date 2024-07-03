@@ -9,10 +9,9 @@ import { useRouter } from "next/navigation";
 
 export default function shoWQuestions () {
     const router = useRouter()
-
     function handleBtn(event:any){
     event.preventDefault();
-    router.push('/SelfQuest')
+    router.push('/Questions/SelfAssesment')
     console.log('this')
 
 }
