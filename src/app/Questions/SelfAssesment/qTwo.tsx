@@ -5,7 +5,7 @@ let selfQ = selfAssesmentQuestions
 export function QTwo(){
  let copyInfo = selfQ.find((selfOne) => selfOne.id === 2)
   return(
-<div>
+<div key={copyInfo?.id}>
 <div className='font-regular m-4 text-3xl text-stone-600'>
 
 {copyInfo?.question}
