@@ -7,11 +7,11 @@ import { useRouter } from "next/navigation";
 
 
 
-export const ShowQuestions = (): React.ReactNode => {
+    export default function ShowQuestions(): React.ReactNode  {
     const router = useRouter()
     function handleBtn(event:any){
     event.preventDefault();
-    router.push('/Questions/SelfAssesment')
+    router.push('/SelfAssesment')
     console.log('this')
 
 }
