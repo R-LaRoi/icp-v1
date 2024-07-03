@@ -6,10 +6,9 @@ import { useRouter } from "next/navigation";
 
 export const MainForm = (): React.ReactNode => {
 let [userInput, setUserInput] = useState({});
-
+  const router = useRouter()
 
  function formSubmitted (event:any)  {
-  const router = useRouter()
         event.preventDefault();
 
         const submitData = {
@@ -20,6 +19,7 @@ let [userInput, setUserInput] = useState({});
 }
 
 function formChange (event:any) {
+       event.preventDefault();
    const { target } = event;
     const { name, value } = target;
 
@@ -70,7 +70,7 @@ return(
     
     </div>
     <div className="flex items-center justify-between">
-      <button className="  start-btn bg-hover:stone-400 text-white font-bold py-2 px-8 focus:outline-none focus:shadow-outline" type="submit" 
+      <button className="start-btn bg-hover:stone-400 text-white font-bold py-2 px-8 focus:outline-none focus:shadow-outline" type="submit" 
     >
 GET STARTED
       </button>
