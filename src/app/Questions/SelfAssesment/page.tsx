@@ -9,7 +9,7 @@ export default function SelfAssesmentQuestions () {
    
 const {questions, questionIndex, question, backQtn, nextQtn } =  selfAQForm([
 
-<QOne/>,<QTwo/>,<QThree />
+<QOne key="uniqueId1"/>,<QTwo key="uniqueId1"/>,<QThree key="uniqueId1"/>
 ])
 
 
