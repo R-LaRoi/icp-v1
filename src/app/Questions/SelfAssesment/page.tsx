@@ -1,12 +1,15 @@
 'use client'
 import React from "react";
 import { selfAQForm } from "../../icpHome/selfAQForm";
+import { QOne } from "./qOne";
+import { QTwo } from "./qTwo";
+import { QThree } from "./qThree";
 
 export default function SelfAssesmentQuestions () {
    
 const {questions, questionIndex, question, backQtn, nextQtn } =  selfAQForm([
 
-  <div>One</div>,<div>Two</div>
+<QOne/>,<QTwo/>, <QThree />
 ])
 
 

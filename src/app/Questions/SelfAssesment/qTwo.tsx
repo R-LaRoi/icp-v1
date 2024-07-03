@@ -2,8 +2,8 @@ import {selfAssesmentQuestions} from './dataQuestions'
 
 let selfQ = selfAssesmentQuestions
 
-export function QOne(){
- let copyInfo = selfQ.find((selfOne) => selfOne.id === 1)
+export function QTwo(){
+ let copyInfo = selfQ.find((selfOne) => selfOne.id === 2)
   return(
 <div>
 <div>
