@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 
 
-export const showQuestions = (): React.ReactNode => {
+export const ShowQuestions = (): React.ReactNode => {
     const router = useRouter()
     function handleBtn(event:any){
     event.preventDefault();
