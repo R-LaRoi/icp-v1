@@ -1,7 +1,7 @@
 import { ReactElement , useState} from "react";
 
 
-export function selfAQForm(questions: ReactElement[]){
+export function SelfAQForm(questions: ReactElement[]){
 
 const [questionIndex, setQuestionIndex]  = useState(0)
 
