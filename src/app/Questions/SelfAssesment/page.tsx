@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { FormEvent } from "react";
 import { selfAQForm } from "../../icpHome/selfAQForm";
 import { QOne } from "./qOne";
 import { QTwo } from "./qTwo";
@@ -9,16 +9,21 @@ export default function SelfAssesmentQuestions () {
    
 const {questions, questionIndex, question, backQtn, nextQtn } =  selfAQForm([
 
-<QOne/>,<QTwo/>, <QThree />
+<QOne/>,<QTwo/>,<QThree />
 ])
 
+
+function submitForm(e: FormEvent){
+  e.preventDefault();
+  nextQtn();
+}
 
 return(
 
 
 <div>
-<form>
-<div style={{ position: "absolute", top: "5rem", right: "5rem"}}>
+<form onSubmit={submitForm}>
+<div>
 {questionIndex + 1} \ {questions.length}
 </div>
 {question}
@@ -27,7 +32,10 @@ return(
   <button type="button"  
   onClick={backQtn}>Back</button> }
 
-  <button type="button" onClick={nextQtn}>
+  <button 
+  className="arrows mx-2 mt-2 px-2"
+
+  type="submit" >
     {questionIndex === questions.length - 1 ? "done" : "next" }</button>
 </div>
 </form>
