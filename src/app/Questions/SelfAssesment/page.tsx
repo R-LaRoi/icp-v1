@@ -1,21 +1,53 @@
 'use client'
-import React, { FormEvent } from "react";
-import { SelfAQForm } from "../../icpHome/selfAQForm";
+import React, { FormEvent , useState } from "react";
+import { SelfAQForm } from "./selfAQForm";
 import { QOne } from "./qOne";
 import { QTwo } from "./qTwo";
 import { QThree } from "./qThree";
 
-export default function SelfAssesmentQuestions () {
-   
-const {questions, questionIndex, question, backQtn, nextQtn } =  SelfAQForm([
 
-<QOne key="uniqueId1"/>,<QTwo key="uniqueId1"/>,<QThree key="uniqueId1"/>
+type FormData = {
+
+ strengths:string
+next_career: string 
+}
+
+const INIIAL_DATA: FormData = {
+strengths:"",
+next_career: ""
+
+}
+
+
+export default function SelfAssesmentQuestions () {
+const [data, setData] = useState(INIIAL_DATA)
+
+function updateTextArea(textArea: Partial<FormData>){
+
+  setData(prev => {
+
+    return {...prev, ...textArea}
+  })
+}
+
+
+const {questions, questionIndex, question, backQtn, nextQtn } = SelfAQForm([ <QOne key="Id0" {...data}  />,
+<QTwo key="Id1" {...data}  updateTextArea={updateTextArea}/>,
+<QThree key="Id2" {...data}  updateTextArea={updateTextArea}/>
 ])
 
 
 function submitForm(e: FormEvent){
   e.preventDefault();
+
+ if (questionIndex !== questions.length - 1){
   nextQtn();
+ } else {
+  //  send the data
+  alert('form submitted')
+  console.log(data)
+ }
+
 }
 
 return(
