@@ -4,19 +4,33 @@ import { SelfAQForm } from "./selfAQForm";
 import { QOne } from "./qOne";
 import { QTwo } from "./qTwo";
 import { QThree } from "./qThree";
+import { QFour } from "./qFour";
+import { QFive } from "./qFive";
+import { QSix } from "./qSix";
+import { QSeven } from "./qSeven";
+import { QEight } from "./qEight";
+import { QNine } from "./qNine";
 import { Navigation } from "../../icpHome/nav"
 
 
 type FormData = {
-
- strengths:string
+strengths:string
 next_career: string 
+wkExp_values: string
+career_concerns: string
+industry_pref: string
+dream_acc: string
+motivation: string
 }
 
 const INIIAL_DATA: FormData = {
-strengths:"",
-next_career: ""
-
+strengths:'',
+next_career: '',
+wkExp_values: '',
+career_concerns: '',
+industry_pref: '',
+dream_acc: '',
+motivation: '',
 }
 
 
@@ -32,10 +46,17 @@ function updateTextArea(textArea: Partial<FormData>){
 }
 
 
-const {questions, questionIndex, question, backQtn, nextQtn } = SelfAQForm([ <QOne key="Id0" {...data}  />,
-<QTwo key="Id1" {...data}  updateTextArea={updateTextArea}/>,
-<QThree key="Id2" {...data}  updateTextArea={updateTextArea}/>
+const {questions, questionIndex, question, backQtn, nextQtn } = SelfAQForm([ <QOne key="1" {...data}  />,
+<QTwo key="2" {...data}  updateTextArea={updateTextArea}/>,
+<QThree key="3" {...data}  updateTextArea={updateTextArea}/>,
+<QFour key="4" {...data}  updateTextArea={updateTextArea}/>,<QFive key="5" {...data}  updateTextArea={updateTextArea}/>,
+<QSix key="5" {...data}  updateTextArea={updateTextArea}/>,
+<QSix key="6" {...data}  updateTextArea={updateTextArea}/>,
+<QSeven key="7" {...data}  updateTextArea={updateTextArea}/>,
+<QEight key="8" {...data}  updateTextArea={updateTextArea}/>,
+<QNine key="9" {...data} /> 
 ])
+
 
 
 function submitForm(e: FormEvent){

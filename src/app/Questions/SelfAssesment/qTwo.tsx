@@ -17,17 +17,17 @@ type QTwoProps = UserTextData & {
 
 
 export function QTwo({strengths, updateTextArea }:QTwoProps){
- let copyInfo = selfQ.find((selfOne) => selfOne.id === 2)
+ let introQ2 = selfQ.find((selfOne) => selfOne.id === 2)
   return(
 
   <QWrapper title="Introspective">
-<div key={copyInfo?.id}>
+<div key={introQ2?.id}>
 <div className='font-regular m-4 text-3xl text-stone-600'>
 
-{copyInfo?.question}
+{introQ2?.question}
 </div>
 <div className='font-light m-4 text-2xl text-stone-600'>
-{copyInfo?.selections}
+{introQ2?.selections}
 </div>
 <div className="relative w-full min-w-[200px]">
     <textarea

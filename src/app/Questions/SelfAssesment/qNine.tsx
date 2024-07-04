@@ -3,20 +3,20 @@ import {selfAssesmentQuestions} from './dataQuestions'
 
 let selfQ = selfAssesmentQuestions
 
-export function QOne(){
-let introQ = selfQ.find((selfOne) => selfOne.id === 1)
-const qOptions = introQ?.selections;
+export function QNine(){
+let introQ9 = selfQ.find((selfOne) => selfOne.id === 9)
+const qOptions = introQ9?.selections;
 
 
 
   return(
 <QWrapper title="Introspective">
  
-<div key={introQ
+<div key={introQ9
 ?.id}>
 <div className='font-regular m-4 text-3xl text-stone-600'>
 
-{introQ?.question}
+{introQ9?.question}
 </div>
 <div className='font-light m-4 text-2xl text-stone-600'>
 <ul>
