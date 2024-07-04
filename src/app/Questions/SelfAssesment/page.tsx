@@ -1,15 +1,15 @@
 'use client'
 import React, { FormEvent , useState } from "react";
 import { SelfAQForm } from "./selfAQForm";
-import { QOne } from "./qOne";
-import { QTwo } from "./qTwo";
-import { QThree } from "./qThree";
-import { QFour } from "./qFour";
-import { QFive } from "./qFive";
-import { QSix } from "./qSix";
-import { QSeven } from "./qSeven";
-import { QEight } from "./qEight";
-import { QNine } from "./qNine";
+import { QOne } from "./QComponents/qOne";
+import { QTwo } from "./QComponents/qTwo";
+import { QThree } from "./QComponents/qThree";
+import { QFour } from "./QComponents/qFour";
+import { QFive } from "./QComponents/qFive";
+import { QSix } from "./QComponents/qSix";
+import { QSeven } from "./QComponents/qSeven";
+import { QEight } from "./QComponents/qEight";
+import { QNine } from "./QComponents/qNine";
 import { Navigation } from "../../icpHome/nav"
 
 

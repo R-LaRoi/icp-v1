@@ -1,5 +1,5 @@
-import { QWrapper } from '../QWrapper'
-import {selfAssesmentQuestions} from './dataQuestions'
+import { QWrapper } from '../../QWrapper'
+import {selfAssesmentQuestions} from '../dataQuestions'
 
 let selfQ = selfAssesmentQuestions
 
