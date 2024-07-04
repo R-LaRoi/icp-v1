@@ -4,6 +4,7 @@ import { SelfAQForm } from "./selfAQForm";
 import { QOne } from "./qOne";
 import { QTwo } from "./qTwo";
 import { QThree } from "./qThree";
+import { Navigation } from "../../icpHome/nav"
 
 
 type FormData = {
@@ -54,6 +55,7 @@ return(
 
 
 <div>
+   <Navigation />
 <form onSubmit={submitForm}>
 <div>
 {questionIndex + 1} \ {questions.length}

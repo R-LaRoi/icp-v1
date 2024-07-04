@@ -1,7 +1,6 @@
 import React from "react";
 import './icpHome.css'
-
-
+import Link from 'next/link'
 export const Navigation = (): React.ReactNode =>
 
 {
@@ -9,6 +8,7 @@ return(
 
   <div className="nav m-3">
     <ul className="flex justify-between">
+   <Link href="/">
   <li className="mr-3">
     <span className="flex justify-between  ">
     <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="#D87355" className="size-9" > 
@@ -17,7 +17,7 @@ return(
 <p className="mx-2 text-3xl text-stone-300">ICP</p>
 
  </span>
-  </li>
+  </li></Link>
 <li><button style={{backgroundColor:"#D87355"}} className="  start-btn bg-hover:stone-400 text-white font-bold py-2 px-8 focus:outline-none focus:shadow-outline" type="submit" 
     >
 login

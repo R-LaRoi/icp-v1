@@ -20,7 +20,7 @@ export function QTwo({strengths, updateTextArea }:QTwoProps){
  let copyInfo = selfQ.find((selfOne) => selfOne.id === 2)
   return(
 
-  <QWrapper title="Self Assement">
+  <QWrapper title="Introspective">
 <div key={copyInfo?.id}>
 <div className='font-regular m-4 text-3xl text-stone-600'>
 
