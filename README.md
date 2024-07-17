@@ -1,5 +1,6 @@
 
-# Individual Career Plan
+# Individual Career Plan - 🛠 *In Progress*
+
 
 An individual career plan is an application to assist users with developing a plan towards achieving their career goals.
 
@@ -28,6 +29,7 @@ Users are provided with key focal points to support professional aspirations:
 **Client:** React, Typescript, TailwindCSS
 
 **Server:** Node, Express, MongoDB
+
 
 
 ## Screenshots
