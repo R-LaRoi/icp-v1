@@ -18,13 +18,12 @@ export function QThree({ next_career, updateTextArea }: QThreeProps) {
     <QWrapper title="Introspective">
       <div key={introQ3?.id}>
         <div className='font-regular m-4 text-3xl text-stone-600'>
-
           {introQ3?.question}
         </div>
         <div className='font-light m-4 text-2xl text-stone-600'>
           {introQ3?.selections}
         </div>
-        <div className="relative w-full min-w-[200px] max-w-2xl">
+        <div className="relative w-full min-w-[200px] m-4 max-w-2xl ">
           <textarea
             name="next_career"
             value={next_career}

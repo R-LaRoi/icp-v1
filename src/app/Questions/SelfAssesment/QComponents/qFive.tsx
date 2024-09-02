@@ -26,7 +26,7 @@ export function QFive({ career_concerns, updateTextArea }: QFiveProps) {
         <div className='font-light m-4 text-2xl text-stone-600'>
           {introQ5?.selections}
         </div>
-        <div className="relative w-full min-w-[200px] max-w-2xl">
+        <div className="relative w-full min-w-[200px] max-w-2xl m-4">
           <textarea
             name="career_concerns"
             value={career_concerns}

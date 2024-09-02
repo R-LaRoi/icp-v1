@@ -27,7 +27,7 @@ export function QSeven({ dream_acc, updateTextArea }: QSevenProps) {
         <div className="relative w-full min-w-[200px] ">
           {introQ7?.selections}
         </div>
-        <div className="relative w-full min-w-[200px] max-w-2xl">
+        <div className="relative w-full min-w-[200px] max-w-2xl m-4">
           <textarea
             name="dream_acc"
             value={dream_acc}

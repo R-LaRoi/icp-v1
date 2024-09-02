@@ -12,19 +12,6 @@
     "img form"
     "footer footer";
   font-family: Visby;
-
-  /* text-transform: uppercase; */
-}
-.nav {
-  margin: 0;
-  grid-area: nav;
-  background-color: #2e2d2c;
-  height: 70px;
-  padding: 20px;
-  position: fixed;
-  width: 100vw;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .icp-article {
@@ -35,7 +22,6 @@
 }
 .form {
   grid-area: form;
-  /* width: 60%; */
 }
 #username,
 #email {

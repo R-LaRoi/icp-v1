@@ -78,11 +78,11 @@ export default function SelfAssesmentQuestions() {
     <div>
       <Navigation />
       <form onSubmit={submitForm}>
-        <div>
+        <div className="text-stone-600 text-2xl mt-20">
           {questionIndex + 1} \ {questions.length}
         </div>
         {question}
-        <div className="flex justify-end gap-2 mt-4 mb-8">
+        <div className="flex justify-end gap-2  m-8">
           {questionIndex !== 0 &&
             <button className="border text-stone-600 hover:bg-orange-300 hover:text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
               type="button"

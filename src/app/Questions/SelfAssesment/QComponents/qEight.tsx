@@ -26,7 +26,7 @@ export function QEight({ motivation, updateTextArea }: QEightProps) {
         <div className='font-light m-4 text-2xl text-stone-600'>
           {introQ8?.selections}
         </div>
-        <div className="relative w-full min-w-[200px] max-w-2xl">
+        <div className="relative w-full min-w-[200px] max-w-2xl m-4">
           <textarea
             name="motivation"
             value={motivation}

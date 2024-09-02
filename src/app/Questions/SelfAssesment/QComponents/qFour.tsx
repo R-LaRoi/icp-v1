@@ -24,7 +24,7 @@ export function QFour({ wkExp_values, updateTextArea }: QFourProps) {
         <div className='font-light m-4 text-2xl text-stone-600'>
           {copyInfo?.selections}
         </div>
-        <div className="relative w-full min-w-[200px] max-w-2xl">
+        <div className="relative w-full min-w-[200px] max-w-2xl m-4">
           <textarea
             name="wkExp_values"
             value={wkExp_values}

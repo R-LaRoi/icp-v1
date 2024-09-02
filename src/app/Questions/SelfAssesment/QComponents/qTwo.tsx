@@ -27,7 +27,7 @@ export function QTwo({ strengths, updateTextArea }: QTwoProps) {
         <div className='font-light m-4 text-2xl text-stone-600'>
           {introQ2?.selections}
         </div>
-        <div className="relative w-full min-w-[200px] max-w-2xl">
+        <div className="relative w-full min-w-[200px] max-w-2xl m-4">
           <textarea
             name="strengths"
             onChange={e => updateTextArea({ strengths: e.target.value })}
