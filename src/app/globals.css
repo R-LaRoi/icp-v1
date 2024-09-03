@@ -29,3 +29,22 @@ body {
   background-color: #58563d;
   border-radius: 10px;
 }
+
+.text-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.text-reveal span {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: slideUp 0.8s forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

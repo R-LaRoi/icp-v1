@@ -1,5 +1,5 @@
 'use client'
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import { SelfAQForm } from "./selfAQForm";
 import { QOne } from "./QComponents/qOne";
 import { QTwo } from "./QComponents/qTwo";
@@ -32,6 +32,10 @@ const INIIAL_DATA: FormData = {
   dream_acc: '',
   motivation: '',
 }
+
+
+
+
 
 
 export default function SelfAssesmentQuestions() {
@@ -72,16 +76,23 @@ export default function SelfAssesmentQuestions() {
 
   }
 
+
+
+
+
   return (
 
 
     <div>
       <Navigation />
       <form onSubmit={submitForm}>
-        <div className="text-stone-600 text-2xl mt-20">
+        <div className="text-stone-600 text-2xl mt-25">
           {questionIndex + 1} \ {questions.length}
         </div>
-        {question}
+
+        <div className="text-reveal">
+          <span>{question}</span>
+        </div>
         <div className="flex justify-end gap-2  m-8">
           {questionIndex !== 0 &&
             <button className="border text-stone-600 hover:bg-orange-300 hover:text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"

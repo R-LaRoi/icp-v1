@@ -12,6 +12,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.19",
+    "gsap": "^3.12.5",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
@@ -27,6 +28,6 @@
     "typescript": "^5"
   },
   "resolutions": {
-  "@types/react": "^17.0.38"
-}
+    "@types/react": "^17.0.38"
+  }
 }
