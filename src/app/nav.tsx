@@ -1,9 +1,13 @@
+'use client'
 import React from "react";
-import './icpHome.css'
+import './icpHome/icpHome.css'
 import Link from 'next/link'
-export const Navigation = (): React.ReactNode => {
-  return (
 
+
+export const Navigation = (): React.ReactNode => {
+
+
+  return (
     <div className="fixed top-0 left-0 right-0 bg-[#2e2d2c] h-[70px] p-5 shadow-lg z-10">
       <ul className="flex justify-between">
         <Link href="/">
@@ -13,18 +17,13 @@ export const Navigation = (): React.ReactNode => {
                 <path d="M15 3.75H9v16.5h6V3.75ZM16.5 20.25h3.375c1.035 0 1.875-.84 1.875-1.875V5.625c0-1.036-.84-1.875-1.875-1.875H16.5v16.5ZM4.125 3.75H7.5v16.5H4.125a1.875 1.875 0 0 1-1.875-1.875V5.625c0-1.036.84-1.875 1.875-1.875Z" />
               </svg>
               <p className="mx-2 text-3xl text-stone-300">ICP</p>
-
             </span>
-          </li></Link>
-        <li><button style={{ backgroundColor: "#D87355" }} className="  start-btn bg-hover:stone-400 text-white font-bold py-2 px-8 focus:outline-none focus:shadow-outline" type="submit"
-        >
-          login
-
-        </button></li>
+          </li>
+        </Link>
+        <li>
+          bling
+        </li>
       </ul>
     </div>
-
-
   )
-
 }

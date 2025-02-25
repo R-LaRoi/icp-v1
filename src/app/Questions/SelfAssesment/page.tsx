@@ -1,5 +1,5 @@
 'use client'
-import React, { FormEvent, useState, useEffect } from "react";
+import React, { FormEvent, useState } from "react";
 import { SelfAQForm } from "./selfAQForm";
 import { QOne } from "./QComponents/qOne";
 import { QTwo } from "./QComponents/qTwo";
@@ -10,10 +10,10 @@ import { QSix } from "./QComponents/qSix";
 import { QSeven } from "./QComponents/qSeven";
 import { QEight } from "./QComponents/qEight";
 import { QNine } from "./QComponents/qNine";
-import { Navigation } from "../../icpHome/nav"
+import { Navigation } from "../../nav"
+import AnswerPage from "../../Answers/AnswerPage";
 
-
-type FormData = {
+export type FormData = {
   introspective: string | null
   strengths: string
   next_career: string
@@ -42,6 +42,7 @@ const INIIAL_DATA: FormData = {
 
 export default function SelfAssesmentQuestions() {
   const [data, setData] = useState(INIIAL_DATA)
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   function updateTextArea(textArea: Partial<FormData>) {
     setData(prev => {
@@ -57,50 +58,42 @@ export default function SelfAssesmentQuestions() {
     setData(prev => ({ ...prev, factors: answerChecked }))
   }
 
+
   const { questions, questionIndex, question, backQtn, nextQtn } = SelfAQForm([
 
     <QOne key="1" selectedAnswer={updateAnswer} />,
-
     <QTwo key="2" {...data} updateTextArea={updateTextArea} />,
     <QThree key="3" {...data} updateTextArea={updateTextArea} />,
     <QFour key="4" {...data} updateTextArea={updateTextArea} />,
     <QFive key="5" {...data} updateTextArea={updateTextArea} />,
     <QSix key="5" {...data} updateTextArea={updateTextArea} />,
-
     <QSeven key="7" {...data} updateTextArea={updateTextArea} />,
     <QEight key="8" {...data} updateTextArea={updateTextArea} />,
     <QNine key="9" answerChecked={updateCheckbox} />
   ])
 
 
-
   function submitForm(e: FormEvent) {
     e.preventDefault();
-
     if (questionIndex !== questions.length - 1) {
       nextQtn();
     } else {
-      //  send the data
-      alert('form submitted')
-      console.log(data)
+      setIsSubmitted(true);
+      console.log(data);
     }
-
   }
 
-
-
-
+  if (isSubmitted) {
+    return <AnswerPage data={data} />;
+  }
 
   return (
-
-
     <div>
       <Navigation />
       <form onSubmit={submitForm}>
         <div className="text-stone-600 text-2xl mt-25">
           {questionIndex + 1} \ {questions.length}
         </div>
-
         <div className="text-reveal">
           <span>{question}</span>
         </div>
@@ -120,6 +113,5 @@ export default function SelfAssesmentQuestions() {
     </div>
 
   )
-
 
 }

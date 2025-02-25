@@ -6,7 +6,9 @@ import { useRouter } from "next/navigation";
 
 export const MainForm = (): React.ReactNode => {
   let [userInput, setUserInput] = useState({});
-  const router = useRouter()
+  const [name, setName] = useState('');
+  const router = useRouter();
+
 
   function formSubmitted(event: any) {
     event.preventDefault();
@@ -14,7 +16,7 @@ export const MainForm = (): React.ReactNode => {
     const submitData = {
       ...userInput
     }
-    router.push('/Questions')
+    router.push(`/Questions?name=${encodeURIComponent(name)}`);
     console.log(submitData)
   }
 
@@ -22,7 +24,7 @@ export const MainForm = (): React.ReactNode => {
     event.preventDefault();
     const { target } = event;
     const { name, value } = target;
-
+    setName(value);
     setUserInput({
       ...userInput, // Keep existing form data
       [name]: value // Update form data for the input field that changed
