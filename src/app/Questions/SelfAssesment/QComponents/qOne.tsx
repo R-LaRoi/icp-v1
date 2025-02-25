@@ -1,12 +1,23 @@
 import { QWrapper } from '../../QWrapper'
 import { selfAssesmentQuestions } from '../dataQuestions'
 import { useState } from 'react'
+
+
+
+
 let selfQ = selfAssesmentQuestions
 
-export function QOne() {
+export function QOne({ selectedAnswer }: { selectedAnswer: (text: string) => void }) {
   let introQ = selfQ.find((selfOne) => selfOne.id === 1)
   const qOptions = introQ?.selections;
   const [answer, setAnswer] = useState<number | null>(null);
+
+  const handleAnswerChange = (index: number) => {
+    setAnswer(index);
+    if (qOptions && qOptions[index]) {
+      selectedAnswer(qOptions[index]);
+    }
+  };
 
 
   return (
@@ -27,7 +38,7 @@ export function QOne() {
               transition-colors duration-200
               ${answer === index ? 'bg-stone-600 text-white' : ''}
             `}
-                onClick={() => setAnswer(index)} key={item}>{item}</li>
+                onClick={() => handleAnswerChange(index)} key={item}>{item}</li>
               )
 
             })}
