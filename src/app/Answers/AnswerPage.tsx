@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import { FormData } from '../Questions/SelfAssesment/page';
 import { Navigation } from '../nav';
 import axios from 'axios';
-import { Document, Page, Text, pdf } from '@react-pdf/renderer';
-
-
 
 export default function AnswerPage({ data }: { data: FormData }) {
 
@@ -13,21 +10,22 @@ export default function AnswerPage({ data }: { data: FormData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-
-  const generatePDF = () => (
-    <Document>
-      <Page>
-        <Text>Your Self-Assessment Results:</Text>
-        {Object.entries(data).map(([key, value]) => (
-          <Text key={key}>{key}: {Array.isArray(value) ? value.join(', ') : value}</Text>
-        ))}
-      </Page>
-    </Document>
-  );
-
   const downloadPDF = async () => {
     setIsLoading(true);
     try {
+      const { Document, Page, Text, pdf } = await import('@react-pdf/renderer');
+
+      const generatePDF = () => (
+        <Document>
+          <Page>
+            <Text>Your Self-Assessment Results:</Text>
+            {Object.entries(data).map(([key, value]) => (
+              <Text key={key}>{key}: {Array.isArray(value) ? value.join(', ') : value}</Text>
+            ))}
+          </Page>
+        </Document>
+      );
+
       const blob = await pdf(generatePDF()).toBlob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -52,7 +50,6 @@ export default function AnswerPage({ data }: { data: FormData }) {
     }
     setIsLoading(false);
   };
-
   return (
     <div>
       <Navigation />
@@ -126,6 +123,5 @@ export default function AnswerPage({ data }: { data: FormData }) {
         </div>
       </div>
     </div>
-
   );
 }
