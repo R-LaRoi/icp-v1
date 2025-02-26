@@ -43,7 +43,7 @@ export default function AnswerPage({ data }: { data: FormData }) {
   const sendEmail = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post('/api/send-pdf', { email, data });
+      const response = await axios.post('/api/sendEmail', { email, data });
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error sending email. Please try again.');
