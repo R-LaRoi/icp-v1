@@ -13,10 +13,10 @@ export const IcpHome = (): React.ReactNode => {
         <Animation />
       </div>
       <div className="h-screen"></div> {/* Spacer to push content down */}
-      <div className="relative z-10 min-h-screen bg-[#3515B7] flex items-center">
+      <div className="relative z-10 min-h-screen bg-[#E5F1FE] flex items-center">
         <div className="w-full px-12">
           <div className="flex justify-between items-center">
-            <div className="text-5xl text-white">
+            <div className="text-5xl text-[#3515B7]">
               Empower your path forward <br /> with clarity and precision.
             </div>
             <div className="mr-32">

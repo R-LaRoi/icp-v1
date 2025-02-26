@@ -35,10 +35,10 @@ export const MainForm = (): React.ReactNode => {
 
   return (
     <>
-      <div className="bg-[#3b28cc]">
+      <div className="">
         {!showForm ? (
           <button
-            className="border border-white rounded-full px-4 py-2 flex items-center justify-center text-white"
+            className="border border-[#3515B7] rounded-full px-4 py-2 flex items-center justify-center text-white"
             style={{ borderWidth: '0.8px' }}
             onClick={toggleForm}
           >
@@ -61,7 +61,8 @@ export const MainForm = (): React.ReactNode => {
         ) : (
           <form onSubmit={formSubmitted} className="flex items-center space-x-4">
             <input
-              className="border-b border-white bg-transparent w-full py-2 px-3 text-white placeholder-white leading-tight focus:outline-none"
+              className="border-b border-[#3515B7] bg-transparent w-full py-2 px-3 
+              text-[#3515B7] placeholder-stone-600 leading-tight focus:outline-none"
               id="username"
               type="text"
               placeholder="enter name"
@@ -71,7 +72,7 @@ export const MainForm = (): React.ReactNode => {
             />
 
             <input
-              className="border-b border-white bg-transparent w-full py-2 px-3 text-white placeholder-white leading-tight focus:outline-none"
+              className="border-b border-[#3515B7] bg-transparent w-full py-2 px-3 text-[#3515B7] placeholder-[#3515B7]leading-tight focus:outline-none"
               id="email"
               type="email"
               name="email"
@@ -80,9 +81,9 @@ export const MainForm = (): React.ReactNode => {
               required
             />
 
-            <button className="mt-8 border border-white rounded-full px-4 py-2 flex items-center justify-center text-white" type="submit">
+            <button className="mt-8 border bg-[#3515B7] rounded-full px-4 py-2 flex items-center justify-center text-white" type="submit">
+              <div className='mr-2'>    Start</div>
 
-              Start
               <svg
                 className="w-4 h-4 transform rotate-45"
                 fill="none"
