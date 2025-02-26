@@ -8,20 +8,27 @@ export const Navigation = (): React.ReactNode => {
 
 
   return (
-    <div className="fixed top-0 left-0 right-0 bg-[#2e2d2c] h-[70px] p-5 shadow-lg z-10">
+    <div className="fixed top-0 left-0 right-0  h-[70px] p-4 z-10">
       <ul className="flex justify-between">
-        <Link href="/">
-          <li className="mr-3">
-            <span className="flex justify-between  ">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#D87355" className="size-9" >
-                <path d="M15 3.75H9v16.5h6V3.75ZM16.5 20.25h3.375c1.035 0 1.875-.84 1.875-1.875V5.625c0-1.036-.84-1.875-1.875-1.875H16.5v16.5ZM4.125 3.75H7.5v16.5H4.125a1.875 1.875 0 0 1-1.875-1.875V5.625c0-1.036.84-1.875 1.875-1.875Z" />
-              </svg>
-              <p className="mx-2 text-3xl text-stone-300">ICP</p>
-            </span>
-          </li>
-        </Link>
+        <div>
+          <Link href="/">
+            <li className="mr-3 pb-8">
+
+              <p className="mx-2 text-2xl 
+              text-stone-300 ">ICP</p>
+
+            </li>
+          </Link>
+        </div>
         <li>
-          bling
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              <Link href="https://www.linkedin.com" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">LinkedIn</Link>
+              <Link href="https://stroy.dev" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Stroy</Link>
+              <Link href="https://github.com" className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">GitHub</Link>
+            </div>
+          </div>
+
         </li>
       </ul>
     </div>
