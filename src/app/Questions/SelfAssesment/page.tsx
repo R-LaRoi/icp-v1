@@ -66,7 +66,7 @@ export default function SelfAssesmentQuestions() {
     <QThree key="3" {...data} updateTextArea={updateTextArea} />,
     <QFour key="4" {...data} updateTextArea={updateTextArea} />,
     <QFive key="5" {...data} updateTextArea={updateTextArea} />,
-    <QSix key="5" {...data} updateTextArea={updateTextArea} />,
+    <QSix key="6" {...data} updateTextArea={updateTextArea} />,
     <QSeven key="7" {...data} updateTextArea={updateTextArea} />,
     <QEight key="8" {...data} updateTextArea={updateTextArea} />,
     <QNine key="9" answerChecked={updateCheckbox} />
