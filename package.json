@@ -18,11 +18,14 @@
     "gsap": "^3.12.5",
     "next": "14.2.3",
     "nodemailer": "^6.10.0",
+    "pdfkit": "^0.16.0",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/pdfkit": "^0.13.9",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
