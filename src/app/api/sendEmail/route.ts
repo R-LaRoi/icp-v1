@@ -5,38 +5,41 @@ import PDFDocument from 'pdfkit';
 export async function POST(request: Request) {
   const { email, data } = await request.json();
 
-  // Create a PDF document
+  // PDF document
   const doc = new PDFDocument();
   let buffers: Buffer[] = [];
   doc.on('data', buffers.push.bind(buffers));
   doc.on('end', () => {});
 
-  // Add content to the PDF
+  // PDF content
   doc.fontSize(18).text('Your Self-Assessment Results:', 100, 100);
   let yPosition = 150;
-  Object.entries(data).forEach(([key, value]) => {
-    doc.fontSize(12).text(`${key}: ${Array.isArray(value) ? value.join(', ') : String(value)}`, 100, yPosition);
-    yPosition += 20;
-  });
+  if (data) { // Check if data exists
+      Object.entries(data).forEach(([key, value]) => {
+        doc.fontSize(12).text(`${key}: ${Array.isArray(value) ? value.join(', ') : String(value)}`, 100, yPosition);
+        yPosition += 20;
+      });
+  } else {
+      doc.fontSize(12).text("No assessment data available.", 100, yPosition);
+  }
 
-  // Finalize the PDF and create a buffer
+  // PDF final
   doc.end();
   const pdfBuffer = Buffer.concat(buffers);
 
   const transporter = nodemailer.createTransport({
-    // Your email service configuration
-    host: "smtp.example.com",
-    port: 587,
-    secure: false, // Use TLS
+    host: process.env.SMTP_HOST, 
+    port: parseInt(process.env.SMTP_PORT || '587'),
+    secure: process.env.SMTP_SECURE === 'true', 
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.SMTP_USER, 
+      pass: process.env.SMTP_PASS, 
     },
   });
 
   try {
     await transporter.sendMail({
-      from: 'Your Career Plan <augustinfinite@gmail.com>',
+      from: process.env.EMAIL_FROM || 'Your Career Plan <augustinfinite@gmail.com>', 
       to: email,
       subject: "Your Self-Assessment Results",
       text: "Please find your self-assessment results attached.",
@@ -44,9 +47,9 @@ export async function POST(request: Request) {
         {
           filename: 'self-assessment-results.pdf',
           content: pdfBuffer,
-          contentType: 'application/pdf'
-        }
-      ]
+          contentType: 'application/pdf',
+        },
+      ],
     });
 
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
