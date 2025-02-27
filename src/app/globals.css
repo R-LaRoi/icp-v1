@@ -17,16 +17,17 @@ body {
   font-family: ApercuReg;
   margin: 0;
   padding: 0;
+  background-color: #e5f1fe;
 }
 
 .start-btn {
-  background: #58563d;
+  background: #3b28cc;
   font-family: ApercuReg;
   border-radius: 20px;
 }
 
 .arrows {
-  background-color: #58563d;
+  background-color: #3b28cc;
   border-radius: 10px;
 }
 

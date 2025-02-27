@@ -17,11 +17,11 @@ export const selfAssesmentQuestions = [
 
   { id: 6, question: "What is your preferred industry." },
 
-  { id: 7, question: "what would be your dream accomplishment?" },
+  { id: 7, question: "What would be your dream accomplishment?" },
 
   {
     id: 8,
-    question: "what motivates you to pursue a new career?",
+    question: "What motivates you to pursue a new career?",
   },
 
   {
@@ -38,7 +38,6 @@ export const selfAssesmentQuestions = [
       "I've always aspired to have a career like this.",
       "There are chances for career growth.",
       "I am passionate about this field.",
-      "Other:",
     ],
   },
 ];

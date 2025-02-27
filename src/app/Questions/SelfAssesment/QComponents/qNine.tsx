@@ -24,39 +24,32 @@ export function QNine({ answerChecked }: { answerChecked: (answers: string[]) =>
     answerChecked(answers);
   }, [answers]);
 
-
-
   return (
     <QWrapper title="Introspective">
-
-      <div key={introQ9
-        ?.id}>
-        <div className='font-regular m-4 text-3xl text-stone-600'>
-
+      <div key={introQ9?.id}>
+        <div className='font-regular mb-4 text-2xl text-blue-100'>
           {introQ9?.question}
         </div>
-        <div className='font-light m-4 text-2xl text-stone-600'>
-          <ul>
-            {qOptions?.map((item,) => {
+        <div className='font-light text-blue-100'>
+          <ul className="space-y-2">
+            {qOptions?.map((item) => {
               return (
                 <li key={item}>
-                  <label className="flex items-center space-x-2">
-                    <input type="checkbox" className="form-checkbox h-5 w-5 text-stone-600 rounded border-stone-600 focus:ring-stone-600 mr-2"
+                  <label className="flex items-start">
+                    <input
+                      type="checkbox"
+                      className="form-checkbox h-4 w-4 text-blue-100 rounded border-blue-100 focus:ring-blue-100 mt-1"
                       checked={answers.includes(item)}
                       onChange={() => handleAnswerChange(item)}
-                    >
-                    </input>
-                    {item}
+                    />
+                    <span className="ml-2 text-sm">{item}</span>
                   </label>
                 </li>
               )
-
             })}
           </ul>
         </div>
       </div>
     </QWrapper>
-
-
   )
 }

@@ -88,28 +88,36 @@ export default function SelfAssesmentQuestions() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col h-screen ">
       <Navigation />
-      <form onSubmit={submitForm}>
-        <div className="text-stone-600 text-2xl mt-25">
-          {questionIndex + 1} \ {questions.length}
+      <div className="flex flex-1 overflow-hidden">
+        <div className="w-1/2 bg-[#3B28CC] text-white p-8 overflow-y-auto flex flex-col">
+          <form onSubmit={submitForm} className="flex flex-1 flex-col overflow-hidden">
+            <div className="text-2xl mb-4">
+              {questionIndex + 1} \ {questions.length}
+            </div>
+            <div className="text-reveal flex-grow">
+              <span>{question}</span>
+            </div>
+            <div className="mt-[-12rem] ml-4 relative z-90">
+              <div className="flex justify-start gap-2">
+                {questionIndex !== 0 &&
+                  <button className="border border-white text-white hover:bg-white hover:text-[#3B28CC] font-bold py-2 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                    type="button"
+                    onClick={backQtn}>BACK</button>}
+                <button
+                  className="bg-white text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                  type="submit">
+                  {questionIndex === questions.length - 1 ? "DONE" : "NEXT"}
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div className="text-reveal">
-          <span>{question}</span>
-        </div>
-        <div className="flex justify-end gap-2  m-8">
-          {questionIndex !== 0 &&
-            <button className="border text-stone-600 hover:bg-orange-300 hover:text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
-              type="button"
-              onClick={backQtn}>BACK</button>}
+        <div className="w-1/2 bg-[#E5F1FE] flex justify-center items-center">
 
-          <button
-            className="bg-stone-600 hover:bg-orange-300 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline transition-colors duration-200"
-
-            type="submit" >
-            {questionIndex === questions.length - 1 ? "DONE" : "NEXT"}</button>
         </div>
-      </form>
+      </div>
     </div>
 
   )

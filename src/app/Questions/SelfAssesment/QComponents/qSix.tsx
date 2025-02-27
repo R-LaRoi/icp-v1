@@ -19,11 +19,11 @@ export function QSix({ industry_pref, updateTextArea }: QSixProps) {
     <QWrapper title="Introspective">
       <div key={introQ6
         ?.id}>
-        <div className='font-regular m-4 text-3xl text-stone-600'>
+        <div className='font-regular m-4 text-3xl text-blue-100'>
 
           {introQ6?.question}
         </div>
-        <div className='font-light m-4 text-2xl text-stone-600'>
+        <div className='font-light m-4 text-2xl text-blue-100'>
           {introQ6?.selections}
         </div>
         <div className="relative w-full min-w-[200px] max-w-2xl m-4">

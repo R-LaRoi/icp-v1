@@ -20,7 +20,7 @@ export function QSeven({ dream_acc, updateTextArea }: QSevenProps) {
     <QWrapper title="Introspective">
       <div key={introQ7
         ?.id}>
-        <div className='font-regular m-4 text-3xl text-stone-600'>
+        <div className='font-regular m-4 text-3xl text-blue-100'>
 
           {introQ7?.question}
         </div>

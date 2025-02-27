@@ -50,78 +50,99 @@ export default function AnswerPage({ data }: { data: FormData }) {
     }
     setIsLoading(false);
   };
+
+
+
+  const dataEntries = Object.entries(data);
+
   return (
     <div>
       <Navigation />
-      <h1 className="text-4xl font-bold text-stone-600 mb-6">Your Self-Assessment Results</h1>
-      <div className="space-y-4">
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Introspective</h2>
-          <p className="text-lg">{data.introspective}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Strengths</h2>
-          <p className="text-lg">{data.strengths}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Next Career</h2>
-          <p className="text-lg">{data.next_career}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Work Experience Values</h2>
-          <p className="text-lg">{data.wkExp_values}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Career Concerns</h2>
-          <p className="text-lg">{data.career_concerns}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Industry Preference</h2>
-          <p className="text-lg">{data.industry_pref}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Dream Accomplishment</h2>
-          <p className="text-lg">{data.dream_acc}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Motivation</h2>
-          <p className="text-lg">{data.motivation}</p>
-        </div>
-        <div>
-          <h2 className="text-2xl font-semibold text-stone-600">Factors</h2>
-          <ul className="list-disc list-inside text-lg">
-            {data.factors.map((factor, index) => (
-              <li key={index}>{factor}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="mt-8 space-y-4">
-          <button
-            onClick={downloadPDF}
-            disabled={isLoading}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Download PDF
-          </button>
-          <div>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="border p-2 mr-2"
-            />
-            <button
-              onClick={sendEmail}
-              disabled={isLoading || !email}
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Send PDF via Email
-            </button>
+
+      <div className="grid grid-cols-[35%_65%] h-screen ">
+        <div className='bg-[#3B28CC] p-8 overflow-y-auto'>  <h1 className="text-4xl font-bold text-blue-100 mb-6">Your Career Introspective</h1></div>
+        <div >
+
+          <div className="overflow-y-auto">
+            <div>
+
+              <h2 className="text-2xl font-semibold">Level</h2>
+              <p className="text-lg">{data.introspective}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold">Strengths</h2>
+              <p className="text-lg">{data.strengths}</p>
+            </div>
+            <div><h2 className="text-2xl font-semibold">Work Experience Values</h2>
+              <p className="text-lg">{data.wkExp_values}</p></div>
+
           </div>
-          {message && <p className="text-red-500">{message}</p>}
+          <div className=" p-8">
+            <div>
+              <h2 className="text-2xl font-semibold">Motivation</h2>
+              <p className="text-lg">{data.motivation}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold">Next Career</h2>
+              <p className="text-lg">{data.next_career}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold">Dream Accomplishment</h2>
+              <p className="text-lg">{data.dream_acc}</p>
+
+            </div>
+          </div>
+          <div className=" p-8">
+            <div>
+              <h2 className="text-2xl font-semibold">Career Concerns</h2>
+              <p className="text-lg">{data.career_concerns}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-semibold">Industry Preference</h2>
+              <p className="text-lg">{data.industry_pref}</p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-semibold">Factors</h2>
+              <ul className="list-disc list-inside text-lg">
+                {data.factors.map((factor, index) => (
+                  <li key={index}>{factor}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className=" p-8">
+            <div className="mt-8 space-y-4">
+              <button
+                onClick={downloadPDF}
+                disabled={isLoading}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Download PDF
+              </button>
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="border p-2 mr-2"
+                />
+                <button
+                  onClick={sendEmail}
+                  disabled={isLoading || !email}
+                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Send PDF via Email
+                </button>
+              </div>
+              {message && <p className="text-red-500">{message}</p>}
+            </div>
+
+          </div>
         </div>
       </div>
+
     </div>
   );
 }
