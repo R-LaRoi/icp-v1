@@ -66,44 +66,44 @@ export default function AnswerPage({ data }: { data: FormData }) {
           <div className="overflow-y-auto">
             <div>
 
-              <h2 className="text-2xl font-semibold">Level</h2>
+              <h2 className="text-lg font-semibold">Level</h2>
               <p className="text-lg">{data.introspective}</p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold">Strengths</h2>
+              <h2 className="text-lg font-semibold">Strengths</h2>
               <p className="text-lg">{data.strengths}</p>
             </div>
-            <div><h2 className="text-2xl font-semibold">Work Experience Values</h2>
+            <div><h2 className="text-lg font-semibold">Work Experience Values</h2>
               <p className="text-lg">{data.wkExp_values}</p></div>
 
           </div>
           <div className=" p-8">
             <div>
-              <h2 className="text-2xl font-semibold">Motivation</h2>
+              <h2 className="text-lg font-semibold">Motivation</h2>
               <p className="text-lg">{data.motivation}</p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold">Next Career</h2>
+              <h2 className="text-lg font-semibold">Next Career</h2>
               <p className="text-lg">{data.next_career}</p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold">Dream Accomplishment</h2>
+              <h2 className="text-lg font-semibold">Dream Accomplishment</h2>
               <p className="text-lg">{data.dream_acc}</p>
 
             </div>
           </div>
           <div className=" p-8">
             <div>
-              <h2 className="text-2xl font-semibold">Career Concerns</h2>
+              <h2 className="text-lg font-semibold">Career Concerns</h2>
               <p className="text-lg">{data.career_concerns}</p>
             </div>
             <div>
-              <h2 className="text-2xl font-semibold">Industry Preference</h2>
+              <h2 className="text-lg font-semibold">Industry Preference</h2>
               <p className="text-lg">{data.industry_pref}</p>
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold">Factors</h2>
+              <h2 className="text-lg font-semibold">Factors</h2>
               <ul className="list-disc list-inside text-lg">
                 {data.factors.map((factor, index) => (
                   <li key={index}>{factor}</li>

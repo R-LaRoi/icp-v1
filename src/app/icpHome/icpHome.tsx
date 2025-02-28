@@ -17,7 +17,7 @@ export const IcpHome = (): React.ReactNode => {
         <div className="w-full px-12">
           <div className="flex justify-between items-center">
             <div className="text-5xl text-[#3515B7]">
-              Empower your path forward <br /> with clarity and precision.
+              Empowering Your Journey <br />One Step at a Time.
             </div>
             <div className="mr-32">
               <MainForm />

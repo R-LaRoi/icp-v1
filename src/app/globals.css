@@ -43,6 +43,10 @@ body {
   animation-delay: 0.1s;
 }
 
+.text-lg {
+  color: #3b28cc;
+  font-weight: 200;
+}
 @keyframes slideUp {
   to {
     transform: translateY(0);
