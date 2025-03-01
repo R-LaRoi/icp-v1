@@ -41,6 +41,7 @@ export default function AnswerPage({ data }: { data: FormData }) {
   };
 
   const sendEmail = async () => {
+    console.log("sendEmail function called");
     setIsLoading(true);
     try {
       const response = await axios.post('/api/sendEmail', { email, data });
@@ -117,7 +118,10 @@ export default function AnswerPage({ data }: { data: FormData }) {
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    console.log("Email input changed:", e.target.value); // Add this line
+                  }}
                   placeholder="Enter your email"
                   className="border-b border-[#3B28CC] bg-transparent w-full py-2 px-3 text-[#3B28CC] placeholder-stone-600 leading-tight focus:outline-none"
                 />
@@ -131,7 +135,7 @@ export default function AnswerPage({ data }: { data: FormData }) {
                   </button>
                   <button
                     onClick={sendEmail}
-                    disabled={isLoading || !email}
+                    // disabled={isLoading || !email}
                     className="bg-white text-xs text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
                   >
                     Send PDF via Email

@@ -17,10 +17,10 @@
     "axios": "^1.7.9",
     "framer-motion": "^12.4.7",
     "gsap": "^3.12.5",
-    "next": "14.2.3",
+    "next": "^14.2.24",
     "node-mailjet": "^6.0.6",
     "nodemailer": "^6.10.0",
-    "pdfkit": "^0.16.0",
+    "puppeteer": "^24.3.0",
     "react": "^18",
     "react-dom": "^18"
   },
@@ -34,7 +34,7 @@
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5.8.2"
   },
   "resolutions": {
     "@types/react": "^17.0.38"
