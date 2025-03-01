@@ -88,12 +88,12 @@ export default function SelfAssesmentQuestions() {
   }
 
   return (
-    <div className="flex flex-col h-screen ">
+    <div className="flex flex-col h-screen">
       <Navigation />
-      <div className="flex flex-1 overflow-hidden">
-        <div className="w-1/2 bg-[#3B28CC] text-white p-8 overflow-y-auto flex flex-col">
+      <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
+        <div className="w-full md:w-1/2 bg-[#3B28CC] text-white p-8 overflow-y-auto flex flex-col">
           <form onSubmit={submitForm} className="flex flex-1 flex-col overflow-hidden">
-            <div className="text-2xl mb-4">
+            <div className="absolute top-0 right-0 text-2xl mb-4 p-4 z-10">
               {questionIndex + 1} \ {questions.length}
             </div>
             <div className="text-reveal flex-grow">
@@ -114,11 +114,12 @@ export default function SelfAssesmentQuestions() {
             </div>
           </form>
         </div>
-        <div className="w-1/2 bg-[#E5F1FE] flex justify-center items-center">
-
+        <div className="w-full md:w-1/2 bg-[#E5F1FE] flex justify-center items-center">
+          {/* Content for the right side */}
         </div>
       </div>
     </div>
+
 
   )
 

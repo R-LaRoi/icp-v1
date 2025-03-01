@@ -43,9 +43,14 @@ body {
   animation-delay: 0.1s;
 }
 
-.text-lg {
+.text-lg,
+.text-xl,
+.text-2xl {
   color: #3b28cc;
   font-weight: 200;
+}
+
+.text-2xl {
 }
 @keyframes slideUp {
   to {

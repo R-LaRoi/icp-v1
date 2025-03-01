@@ -43,10 +43,16 @@ export const Animation = () => {
             <div className="text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="text-container bg-transparent flex flex-col items-center justify-center">
                 <div className="blur-background absolute top-0 left-0 w-full h-full"></div>
-                <h1 className="font-light text-white text-6xl whitespace-nowrap relative z-10">connect the dots</h1>
-                <p className="text-2xl mt-5 relative z-10">Get closer to your goals today</p>
+                <h1 className="font-light text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl whitespace-nowrap relative z-10">
+                  From big dreams to small wins,
+                </h1>
+                <h1 className="font-light text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl whitespace-nowrap relative z-10">
+                  create your path to success.
+                </h1>
+                <p className="text-lg sm:text-xl md:text-2xl text-white mt-5 relative z-10"></p>
               </div>
             </div>
+
             <div className="circle-text-background" />
 
 

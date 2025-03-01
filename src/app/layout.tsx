@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+
+
+const NyghtLite = localFont({
+  src: "./font/NyghtSerif-Light.ttf",
+  variable: "--font-BaseNeue",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "ICP",
@@ -16,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={NyghtLite.className}>{children}</body>
     </html>
   );
 }

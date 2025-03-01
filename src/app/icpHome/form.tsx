@@ -38,11 +38,11 @@ export const MainForm = (): React.ReactNode => {
       <div className="">
         {!showForm ? (
           <button
-            className="border border-[#3515B7] rounded-full px-4 py-2 flex items-center justify-center text-white"
+            className="border border-[#3515B7] bg-[#3515B7] rounded-full  mt-4 px-4 py-3 flex items-center justify-center"
             style={{ borderWidth: '0.8px' }}
             onClick={toggleForm}
           >
-            <span className="mr-2">Get Started</span>
+            <span className="mr-2  text-white text-sm ">Get Started</span>
             <svg
               className="w-4 h-4 transform -rotate-45"
               fill="none"
@@ -59,10 +59,10 @@ export const MainForm = (): React.ReactNode => {
             </svg>
           </button>
         ) : (
-          <form onSubmit={formSubmitted} className="flex items-center space-x-4">
+          <form onSubmit={formSubmitted} className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4 w-full md:w-1/2 ">
             <input
-              className="border-b border-[#3515B7] bg-transparent w-full py-2 px-3 
-              text-[#3515B7] placeholder-stone-600 leading-tight focus:outline-none"
+              className="border-b border-[#3515B7] bg-transparent w-full py-1 md:py-1.5 px-2 md:px-3 
+    text-sm md:text-base text-[#3515B7] placeholder-stone-600 leading-tight focus:outline-none"
               id="username"
               type="text"
               placeholder="enter name"
@@ -72,7 +72,8 @@ export const MainForm = (): React.ReactNode => {
             />
 
             <input
-              className="border-b border-[#3515B7] bg-transparent w-full py-2 px-3 text-[#3515B7] placeholder-[#3515B7]leading-tight focus:outline-none"
+              className="border-b border-[#3515B7] bg-transparent w-full py-1 md:py-1.5 px-2 md:px-3 
+    text-sm md:text-base text-[#3515B7] placeholder-[#3515B7] leading-tight focus:outline-none"
               id="email"
               type="email"
               name="email"
@@ -81,11 +82,10 @@ export const MainForm = (): React.ReactNode => {
               required
             />
 
-            <button className="mt-8 border bg-[#3515B7] rounded-full px-4 py-2 flex items-center justify-center text-white" type="submit">
-              <div className='mr-2'>    Start</div>
-
+            <button className="mt-4 md:mt-0 border bg-[#3515B7] rounded-full px-3 md:px-4 py-1.5 md:py-2 flex items-center justify-center text-white text-sm md:text-base" type="submit">
+              <div className='mr-2'>Start</div>
               <svg
-                className="w-4 h-4 transform rotate-45"
+                className="w-3 h-3 md:w-4 md:h-4 transform -rotate-45"
                 fill="none"
                 stroke="white"
                 viewBox="0 0 24 24"
@@ -100,6 +100,8 @@ export const MainForm = (): React.ReactNode => {
               </svg>
             </button>
           </form>
+
+
         )}
       </div>
     </>

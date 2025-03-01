@@ -18,7 +18,7 @@ export default function AnswerPage({ data }: { data: FormData }) {
       const generatePDF = () => (
         <Document>
           <Page>
-            <Text>Your Self-Assessment Results:</Text>
+            <Text>The Starting Line</Text>
             {Object.entries(data).map(([key, value]) => (
               <Text key={key}>{key}: {Array.isArray(value) ? value.join(', ') : value}</Text>
             ))}
@@ -60,51 +60,51 @@ export default function AnswerPage({ data }: { data: FormData }) {
       <Navigation />
 
       <div className="grid grid-cols-[35%_65%] h-screen ">
-        <div className='bg-[#3B28CC] p-8 overflow-y-auto'>  <h1 className="text-4xl font-bold text-blue-100 mb-6">Your Career Introspective</h1></div>
+        <div className='bg-[#3B28CC] p-8 overflow-y-auto'>  <h1 className="text-4xl font-bold text-blue-100 mb-6">The Starting Line</h1></div>
         <div >
 
-          <div className="overflow-y-auto">
+          <div className="overflow-y-auto p-8">
             <div>
 
-              <h2 className="text-lg font-semibold">Level</h2>
-              <p className="text-lg">{data.introspective}</p>
+
+              <p className="text-2xl pt-4">You are {data.introspective} in your career.</p>
             </div>
             <div>
-              <h2 className="text-lg font-semibold">Strengths</h2>
-              <p className="text-lg">{data.strengths}</p>
+              <h2 className="text-2xl font-semibold">Let's build on your strengths.</h2>
+              <p className="text-xl pb-3">{data.strengths}</p>
             </div>
-            <div><h2 className="text-lg font-semibold">Work Experience Values</h2>
-              <p className="text-lg">{data.wkExp_values}</p></div>
+            <div><h2 className="text-2xl font-semibold">Core Values:</h2>
+              <p className="text-xl pb-3">{data.wkExp_values}</p></div>
 
           </div>
           <div className=" p-8">
             <div>
-              <h2 className="text-lg font-semibold">Motivation</h2>
-              <p className="text-lg">{data.motivation}</p>
+              <h2 className="text-2xl font-semibold">Consistency is key! </h2>
+              <p className="text-xl">{data.motivation}</p>
             </div>
             <div>
-              <h2 className="text-lg font-semibold">Next Career</h2>
-              <p className="text-lg">{data.next_career}</p>
+              <h2 className="text-xl font-semibold">What's next?</h2>
+              <p className="text-xl">{data.next_career}</p>
             </div>
             <div>
-              <h2 className="text-lg font-semibold">Dream Accomplishment</h2>
-              <p className="text-lg">{data.dream_acc}</p>
+              <h2 className="text-2xl font-semibold">Celebrating your big win:</h2>
+              <p className="text-xl">{data.dream_acc}</p>
 
             </div>
           </div>
           <div className=" p-8">
             <div>
-              <h2 className="text-lg font-semibold">Career Concerns</h2>
-              <p className="text-lg">{data.career_concerns}</p>
+              <h2 className="text-2xl font-semibold">Challenge accepted.</h2>
+              <p className="text-xl">{data.career_concerns}</p>
             </div>
             <div>
-              <h2 className="text-lg font-semibold">Industry Preference</h2>
-              <p className="text-lg">{data.industry_pref}</p>
+              <h2 className="text-xl font-semibold">Your Specialty.</h2>
+              <p className="text-2xl">{data.industry_pref}</p>
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold">Factors</h2>
-              <ul className="list-disc list-inside text-lg">
+              <h2 className="text-2xl font-semibold">What matters to you?</h2>
+              <ul className="list-disc list-inside text-2xl">
                 {data.factors.map((factor, index) => (
                   <li key={index}>{factor}</li>
                 ))}
@@ -113,31 +113,36 @@ export default function AnswerPage({ data }: { data: FormData }) {
           </div>
           <div className=" p-8">
             <div className="mt-8 space-y-4">
-              <button
-                onClick={downloadPDF}
-                disabled={isLoading}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Download PDF
-              </button>
-              <div>
+              <div className="flex flex-col space-y-4 w-full sm:w-1/2 md:w-1/3">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className="border p-2 mr-2"
+                  className="border-b border-[#3B28CC] bg-transparent w-full py-2 px-3 text-[#3B28CC] placeholder-stone-600 leading-tight focus:outline-none"
                 />
-                <button
-                  onClick={sendEmail}
-                  disabled={isLoading || !email}
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Send PDF via Email
-                </button>
+                <div className="flex space-x-4">
+                  <button
+                    onClick={downloadPDF}
+                    disabled={isLoading}
+                    className="bg-white text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                  >
+                    Download PDF
+                  </button>
+                  <button
+                    onClick={sendEmail}
+                    disabled={isLoading || !email}
+                    className="bg-white text-xs text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                  >
+                    Send PDF via Email
+                  </button>
+                </div>
               </div>
               {message && <p className="text-red-500">{message}</p>}
             </div>
+
+
+
 
           </div>
         </div>

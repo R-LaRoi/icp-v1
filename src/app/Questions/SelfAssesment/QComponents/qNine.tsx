@@ -27,11 +27,11 @@ export function QNine({ answerChecked }: { answerChecked: (answers: string[]) =>
   return (
     <QWrapper title="Introspective">
       <div key={introQ9?.id}>
-        <div className='font-regular mb-4 text-2xl text-blue-100'>
+        <div className='font-regular  text-2xl text-blue-100 '>
           {introQ9?.question}
         </div>
-        <div className='font-light text-blue-100'>
-          <ul className="space-y-2">
+        <div className='font-light text-blue-100 pb-8'>
+          <ul className="space-y-2 mb-8">
             {qOptions?.map((item) => {
               return (
                 <li key={item}>

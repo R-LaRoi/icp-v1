@@ -20,7 +20,7 @@ export default function ShowQuestions(): React.ReactNode {
   return (
     <section>
       <Navigation />
-      <section className="p-12">
+      <section className="p-10">
         <div className="questions-img">
           {/* {mainImg} */}
           {/* <Image src={sandy}
@@ -30,19 +30,32 @@ export default function ShowQuestions(): React.ReactNode {
             priority={true} /> */}
         </div>
         <main>
-          <div className="form m-16 " >
-            <h1 className="font-light text-7xl text-indigo-800">One step at a time.</h1>
-            <p className='text-2xl mt-5 p-2'>Let's get started with a few questions about you.</p>
+          <div className="form mx-4 md:mx-16 my-8 md:my-16">
+            <h1 className="font-light text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-indigo-800">One step at a time.</h1>
+            <p className='text-lg sm:text-xl md:text-2xl mt-3 md:mt-5 p-2'>Let's get started with a few questions about you.</p>
 
-            {/* <BtnQuestions  submit={}/> */}
-            <button className="arrows mx-2 mt-2 px-2" id="show-questions"
-              onClick={handleBtn}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#ffff" className="size-12">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
+            <button
+              className="arrows mx-2 mt-2 px-2"
+              id="show-questions"
+              onClick={handleBtn}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="#ffff"
+                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+                />
               </svg>
             </button>
-
           </div>
+
         </main>
       </section>
     </section>
