@@ -3,9 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 
-
 const NyghtLite = localFont({
-  src: "/public/font/NyghtSerif-Light.ttf",
+  src: "./font/NyghtSerif-Light.ttf",
   variable: "--font-Nyght",
 
 });
