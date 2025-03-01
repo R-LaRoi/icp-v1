@@ -47,10 +47,10 @@ export default function AnswerPage({ data }: { data: FormData }) {
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error sending email. Please try again.');
+      console.error('Error sending email:', error);
     }
     setIsLoading(false);
   };
-
 
 
   const dataEntries = Object.entries(data);
@@ -140,9 +140,6 @@ export default function AnswerPage({ data }: { data: FormData }) {
               </div>
               {message && <p className="text-red-500">{message}</p>}
             </div>
-
-
-
 
           </div>
         </div>

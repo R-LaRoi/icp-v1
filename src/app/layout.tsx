@@ -4,7 +4,7 @@ import "./globals.css";
 
 
 const NyghtLite = localFont({
-  src: "./font/NyghtSerif-Light.ttf",
+  src: "./Font/NyghtSerif-Light.ttf",
   variable: "--font-Nyght",
 
 });

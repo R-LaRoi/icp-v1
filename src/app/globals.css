@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: Visby;
-  src: url(./Font/VisbyRegular.ttf);
-}
-
-@font-face {
-  font-family: Visby-Bold;
-  src: url(./Font/VisbyBold.ttf);
-}
-
 html,
 body {
   font-family: ApercuReg;
@@ -41,12 +31,6 @@ body {
   transform: translateY(100%);
   animation: slideUp 0.8s forwards;
   animation-delay: 0.1s;
-}
-
-.text-lg,
-.text-xl,
-.text-2xl {
-  color: #3b28cc;
 }
 
 .text-2xl {
