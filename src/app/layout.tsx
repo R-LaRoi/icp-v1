@@ -5,9 +5,9 @@ import "./globals.css";
 
 
 const NyghtLite = localFont({
-  src: "./font/NyghtSerif-Light.ttf",
-  variable: "--font-BaseNeue",
-  weight: "100 900",
+  src: "/public/font/NyghtSerif-Light.ttf",
+  variable: "--font-Nyght",
+
 });
 
 export const metadata: Metadata = {
