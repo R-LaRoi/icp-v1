@@ -15,9 +15,10 @@ const generatePDF = async (data: Record<string, any>): Promise<Buffer> => {
     }
 
     const browser = await puppeteer.launch({
-      headless: 'new',
+      headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
+
     const page = await browser.newPage();
     await page.setContent(htmlContent);
     const pdfUint8Array = await page.pdf();
