@@ -13,7 +13,7 @@ export const Animation = () => {
               {[0, 1].map((index) => (
                 <img
                   key={index}
-                  src={`https://cdn.prod.website-files.com/67583dc0980c81a0a2e9f619/${index === 0 ? '6763f2c3a5037374b77ef7b0_rodeo-project-management-software-HBMPQZZondc-unsplash.avif' : '6765b686509ecef426578d19_group-people-working-out-business-plan-office-min.webp'}`}
+                  src={`https://github.com/user-attachments/assets/${index === 0 ? 'a76ba3b3-5169-4da4-a8a4-33711bc6233c' : 'a0043458-93f5-444d-806b-096e4a9951f9'}`}
                   alt=""
                   className="avatar"
                 />
@@ -30,7 +30,7 @@ export const Animation = () => {
               {[0, 1].map((index) => (
                 <img
                   key={index}
-                  src={`https://cdn.prod.website-files.com/67583dc0980c81a0a2e9f619/${index === 0 ? '6765b686509ecef426578cf9_young-woman-sitting-reception-drinking-coffee.webp' : '67640c4302bfd8761661cc43_rodeo-project-management-software-m2GFQaCM-KI-unsplash-min.jpg'}`}
+                  src={`https://github.com/user-attachments/assets/${index === 0 ? '7b64ab2b-c898-43a4-a435-a50d85156de7' : 'a6b118a5-4b59-45ae-8b8c-276fd7e3a841'}`}
                   alt=""
                   className="avatar"
                 />
