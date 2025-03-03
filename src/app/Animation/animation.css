@@ -2,7 +2,32 @@
   position: relative;
   padding-top: 4rem;
   padding-bottom: 10rem;
-  background-color: #3b28cc;
+  /* background-color: #3b28cc; */
+  background: hsla(247, 67%, 48%, 1);
+
+  background: radial-gradient(
+    circle,
+    hsla(247, 67%, 48%, 1) 0%,
+    hsla(247, 60%, 26%, 1) 0%,
+    hsla(247, 86%, 58%, 1) 0%,
+    hsla(247, 67%, 48%, 1) 88%
+  );
+
+  background: -moz-radial-gradient(
+    circle,
+    hsla(247, 67%, 48%, 1) 0%,
+    hsla(247, 60%, 26%, 1) 0%,
+    hsla(247, 86%, 58%, 1) 0%,
+    hsla(247, 67%, 48%, 1) 88%
+  );
+
+  background: -webkit-radial-gradient(
+    circle,
+    hsla(247, 67%, 48%, 1) 0%,
+    hsla(247, 60%, 26%, 1) 0%,
+    hsla(247, 86%, 58%, 1) 0%,
+    hsla(247, 67%, 48%, 1) 88%
+  );
   height: 100vh;
 }
 

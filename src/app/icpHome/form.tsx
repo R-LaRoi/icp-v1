@@ -44,7 +44,7 @@ export const MainForm = (): React.ReactNode => {
           >
             <span className="mr-2  text-white text-sm ">Get Started</span>
             <svg
-              className="w-4 h-4 transform -rotate-45"
+              className="w-4 h-4 transform rotate-45"
               fill="none"
               stroke="white"
               viewBox="0 0 24 24"

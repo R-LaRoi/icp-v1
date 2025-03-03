@@ -9,8 +9,9 @@ body {
 }
 
 .blur-background {
-  background-color: #3b28cc;
-  filter: blur(10px);
+  background: hsla(247, 67%, 48%, 1);
+
+  filter: blur(40px);
   z-index: -1;
 }
 

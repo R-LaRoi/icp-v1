@@ -1,4 +1,4 @@
-// /src/app/api/sendEmail/route.tsx
+
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer';
 import Mailjet from 'node-mailjet';
