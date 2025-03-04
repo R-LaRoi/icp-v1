@@ -93,22 +93,22 @@ export default function SelfAssesmentQuestions() {
     <div className="flex flex-col h-screen">
       <Navigation />
       <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
-        <div className="w-full md:w-1/2 bg-[#3B28CC] text-white p-8 overflow-y-auto flex flex-col">
+        <div className="w-full md:w-1/2 bg-[#3B28CC] text-white p-4 md:p-8 overflow-y-auto flex flex-col md:order-1 order-2">
           <form onSubmit={submitForm} className="flex flex-1 flex-col overflow-hidden">
             <div className="absolute top-0 right-0 text-2xl mb-4 p-4 z-10">
               {questionIndex + 1} \ {questions.length}
             </div>
-            <div className="text-reveal flex-grow">
+            <div className="text-reveal flex-grow mb-8 md:mb-0">
               <span>{question}</span>
             </div>
-            <div className="mt-[-12rem] ml-4 relative z-90">
+            <div className="mt-4 md:mt-[-12rem] ml-4 relative z-90">
               <div className="flex justify-start gap-2">
                 {questionIndex !== 0 &&
-                  <button className="border border-white text-white hover:bg-white hover:text-[#3B28CC] font-bold py-2 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                  <button className="border border-white text-white hover:bg-white hover:text-[#3B28CC] font-bold py-2 px-4 md:px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
                     type="button"
                     onClick={backQtn}>BACK</button>}
                 <button
-                  className="bg-white text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                  className="bg-white text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-4 md:px-8 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
                   type="submit">
                   {questionIndex === questions.length - 1 ? "DONE" : "NEXT"}
                 </button>
@@ -116,15 +116,17 @@ export default function SelfAssesmentQuestions() {
             </div>
           </form>
         </div>
-        <div className="w-full md:w-1/2 bg-[#E5F1FE] flex justify-center items-center">
+        <div className="w-full md:w-1/2 bg-[#E5F1FE] flex justify-center items-center md:order-2 order-1">
           <Image src={sandy}
-            width={400}
-            height={400}
+            width={200}
+            height={200}
+            className="w-32 h-32 md:w-[400px] md:h-[400px]"
             alt="illustration"
             priority={true} />
         </div>
       </div>
     </div>
+
 
 
   )
