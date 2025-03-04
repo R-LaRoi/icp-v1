@@ -30,13 +30,14 @@ This application guides users through a multi-step questionnaire, collecting inf
 - `AnswerPage`: Displays the final summary of insights.
 - `Navigation`: Navigation component (implementation not shown in the provided code).
 
-![Application Interface](https://github.com/user-attachments/assets/49f185b3-81ec-4d88-981f-81d570929ece)
-
 ## Getting Started
 
 1. Clone the repository to your local machine.
 2. Install necessary dependencies using `npm install`.
 3. Run the development server with `npm run dev`.
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+
+![Application Interface](https://github.com/user-attachments/assets/49f185b3-81ec-4d88-981f-81d570929ece)
 
 
