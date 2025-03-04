@@ -30,6 +30,8 @@ This application guides users through a multi-step questionnaire, collecting inf
 - `AnswerPage`: Displays the final summary of insights.
 - `Navigation`: Navigation component (implementation not shown in the provided code).
 
+![Application Interface](https://github.com/user-attachments/assets/49f185b3-81ec-4d88-981f-81d570929ece)
+
 ## Getting Started
 
 1. Clone the repository to your local machine.
