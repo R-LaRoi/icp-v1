@@ -60,12 +60,3 @@ The project follows best practices for structuring a Next.js application:
 ### Application Interface
 ![Application Interface](https://github.com/user-attachments/assets/49f185b3-81ec-4d88-981f-81d570929ece)
 
-## Getting Started
-
-### Prerequisites
-Ensure you have the following installed:
-- Node.js (v16 or higher)
-- npm or yarn package manager
-
-### Installation
-1. Clone the repository:
