@@ -12,6 +12,8 @@ import { QEight } from "./QComponents/qEight";
 import { QNine } from "./QComponents/qNine";
 import { Navigation } from "../../nav"
 import AnswerPage from "../../Answers/AnswerPage";
+import Image from 'next/image'
+import sandy from '../sandy.png'
 
 export type FormData = {
   introspective: string | null
@@ -115,7 +117,11 @@ export default function SelfAssesmentQuestions() {
           </form>
         </div>
         <div className="w-full md:w-1/2 bg-[#E5F1FE] flex justify-center items-center">
-          {/* Content for the right side */}
+          <Image src={sandy}
+            width={400}
+            height={400}
+            alt="illustration"
+            priority={true} />
         </div>
       </div>
     </div>

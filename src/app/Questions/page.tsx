@@ -1,8 +1,8 @@
 'use client'
 import React from "react";
 import { Navigation } from "../nav";
-// import Image from 'next/image'
-// import sandy from './sandy.jpg'
+import Image from 'next/image'
+import sandy from './sandy.png'
 import { useRouter } from "next/navigation";
 
 
@@ -23,11 +23,11 @@ export default function ShowQuestions(): React.ReactNode {
       <section className="p-10">
         <div className="questions-img">
           {/* {mainImg} */}
-          {/* <Image src={sandy}
+          <Image src={sandy}
             width={400}
             height={400}
             alt="illustration"
-            priority={true} /> */}
+            priority={true} />
         </div>
         <main>
           <div className="form mx-4 md:mx-16 my-8 md:my-16">

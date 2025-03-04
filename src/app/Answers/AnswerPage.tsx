@@ -59,95 +59,81 @@ export default function AnswerPage({ data }: { data: FormData }) {
   return (
     <div>
       <Navigation />
+      <div className="bg-indigo-100 min-h-screen p-8">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold text-indigo-800 mb-6">The Starting Line</h1>
 
-      <div className="grid grid-cols-[35%_65%] h-screen ">
-        <div className='bg-[#3B28CC] p-8 overflow-y-auto'>  <h1 className="text-4xl font-bold text-blue-100 mb-6">The Starting Line</h1></div>
-        <div >
+          <div className="bg-indigo-700 text-white rounded-lg shadow-lg p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <p className="text-xl mb-4">You are {data.introspective} in your career.</p>
 
-          <div className="overflow-y-auto p-8">
-            <div>
+                <h2 className="text-xl font-semibold mb-2">Let's build on your strengths.</h2>
+                <p className="text-xl mb-4">{data.strengths}</p>
 
+                <h2 className="text-xl font-semibold mb-2">Core Values:</h2>
+                <p className="text-xl mb-4">{data.wkExp_values}</p>
 
-              <p className="text-2xl pt-4">You are {data.introspective} in your career.</p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold">Let's build on your strengths.</h2>
-              <p className="text-xl pb-3">{data.strengths}</p>
-            </div>
-            <div><h2 className="text-2xl font-semibold">Core Values:</h2>
-              <p className="text-xl pb-3">{data.wkExp_values}</p></div>
-
-          </div>
-          <div className=" p-8">
-            <div>
-              <h2 className="text-2xl font-semibold">Consistency is key! </h2>
-              <p className="text-xl">{data.motivation}</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold">What's next?</h2>
-              <p className="text-xl">{data.next_career}</p>
-            </div>
-            <div>
-              <h2 className="text-2xl font-semibold">Celebrating your big win:</h2>
-              <p className="text-xl">{data.dream_acc}</p>
-
-            </div>
-          </div>
-          <div className=" p-8">
-            <div>
-              <h2 className="text-2xl font-semibold">Challenge accepted.</h2>
-              <p className="text-xl">{data.career_concerns}</p>
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold">Your Specialty.</h2>
-              <p className="text-2xl">{data.industry_pref}</p>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-semibold">What matters to you?</h2>
-              <ul className="list-disc list-inside text-2xl">
-                {data.factors.map((factor, index) => (
-                  <li key={index}>{factor}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className=" p-8">
-            <div className="mt-8 space-y-4">
-              <div className="flex flex-col space-y-4 w-full sm:w-1/2 md:w-1/3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value)
-                    console.log("Email input changed:", e.target.value); // Add this line
-                  }}
-                  placeholder="Enter your email"
-                  className="border-b border-[#3B28CC] bg-transparent w-full py-2 px-3 text-[#3B28CC] placeholder-stone-600 leading-tight focus:outline-none"
-                />
-                <div className="flex space-x-4">
-                  <button
-                    onClick={downloadPDF}
-                    disabled={isLoading}
-                    className="bg-white text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
-                  >
-                    Download PDF
-                  </button>
-                  <button
-                    onClick={sendEmail}
-                    // disabled={isLoading || !email}
-                    className="bg-white text-xs text-[#3B28CC] hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
-                  >
-                    Send PDF via Email
-                  </button>
-                </div>
+                <h2 className="text-xl font-semibold mb-2">Consistency is key!</h2>
+                <p className="text-xl mb-4">{data.motivation}</p>
               </div>
-              {message && <p className="text-red-500">{message}</p>}
+
+              <div>
+                <h2 className="text-xl font-semibold mb-2">What's next?</h2>
+                <p className="text-xl mb-4">{data.next_career}</p>
+
+                <h2 className="text-xl font-semibold mb-2">Celebrating your big win:</h2>
+                <p className="text-xl mb-4">{data.dream_acc}</p>
+
+                <h2 className="text-xl font-semibold mb-2">Challenge accepted.</h2>
+                <p className="text-xl mb-4">{data.career_concerns}</p>
+
+                <h2 className="text-xl font-semibold mb-2">Your Specialty.</h2>
+                <p className="text-xl mb-4">{data.industry_pref}</p>
+
+                <h2 className="text-xl font-semibold mb-2">What matters to you?</h2>
+                <ul className="list-disc list-inside text-xl mb-4">
+                  {data.factors.map((factor, index) => (
+                    <li key={index}>{factor}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
+            <div className="flex flex-col space-y-4 w-full sm:w-1/2 md:w-1/3 mt-8">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  console.log("Email input changed:", e.target.value);
+                }}
+                placeholder="Enter your email"
+                className="border-b border-white bg-transparent w-full py-2 px-3 text-white placeholder-indigo-200 leading-tight focus:outline-none"
+              />
+              <div className="flex space-x-4">
+                <button
+                  onClick={downloadPDF}
+                  disabled={isLoading}
+                  className="bg-white text-indigo-700 hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                >
+                  Download PDF
+                </button>
+                <button
+                  onClick={sendEmail}
+                  className="bg-white text-xs text-indigo-700 hover:bg-indigo-200 font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline transition-colors duration-200"
+                >
+                  Send PDF via Email
+                </button>
+              </div>
+            </div>
+            {message && <p className="text-red-300">{message}</p>}
           </div>
         </div>
       </div>
+
+
+
 
     </div>
   );
