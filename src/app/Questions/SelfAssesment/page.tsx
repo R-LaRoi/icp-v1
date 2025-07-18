@@ -16,7 +16,7 @@ import Image from 'next/image'
 import sandy from '../sandy.png'
 
 export type FormData = {
-  introspective: string | null
+  introspective: string
   strengths: string
   next_career: string
   wkExp_values: string
@@ -28,7 +28,7 @@ export type FormData = {
 }
 
 const INIIAL_DATA: FormData = {
-  introspective: null,
+  introspective: '',
   strengths: '',
   next_career: '',
   wkExp_values: '',

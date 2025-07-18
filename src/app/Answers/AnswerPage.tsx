@@ -4,7 +4,7 @@ import { Navigation } from '../nav';
 import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
-interface FormData {
+interface SelfAssesmentData {
   introspective: string;
   strengths: string;
   wkExp_values: string;
@@ -15,7 +15,7 @@ interface FormData {
   industry_pref: string;
 }
 
-export default function AnswerPage({ data }: { data: FormData }) {
+export default function AnswerPage({ data }: { data: SelfAssesmentData }) {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
