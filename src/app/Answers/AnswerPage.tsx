@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { Navigation } from '../nav';
 import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
@@ -20,25 +19,60 @@ export default function AnswerPage({ data }: { data: SelfAssesmentData }) {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  // Automatically save to database when email changes
-  useEffect(() => {
-    const saveToDatabase = async () => {
-      try {
-        await addDoc(collection(db, 'surveyResults'), {
-          email,
-          ...data,
-          submittedAt: new Date(),
-        });
-        setMessage('Survey results saved to database!');
-      } catch (error) {
-        setMessage('Error saving to database. Please try again.');
-        console.error('Error saving to Firestore:', error);
-      }
-    };
+  // Validate email format
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-    const timeoutId = setTimeout(saveToDatabase, 1000); // Debounce save operation
-    return () => clearTimeout(timeoutId); // Cleanup timeout on unmount or email change
-  }, [email, data]);
+  // Handle sending email and saving to database
+  const handleSendEmail = async () => {
+    if (!email.trim()) {
+      setMessage('Please enter your email address.');
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setMessage('Please enter a valid email address.');
+      return;
+    }
+
+    setIsLoading(true);
+    setMessage('');
+
+    try {
+      // Save to database first
+      await addDoc(collection(db, 'surveyResults'), {
+        email,
+        ...data,
+        submittedAt: new Date(),
+      });
+
+      // Send email with PDF attachment
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          data,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to send email');
+      }
+
+      setMessage('Survey results saved and email sent successfully!');
+    } catch (error) {
+      setMessage('Error processing your request. Please try again.');
+      console.error('Error saving to database or sending email:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -95,19 +129,36 @@ export default function AnswerPage({ data }: { data: SelfAssesmentData }) {
               htmlFor="email"
               className="block text-lg sm:text-xl font-semibold text-indigo-800 mb-2"
             >
-              Enter your email to save your results:
+              Enter your email to save and receive your results:
             </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="Enter your email"
-            />
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Enter your email"
+                disabled={isLoading}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSendEmail();
+                  }
+                }}
+              />
+              <button
+                onClick={handleSendEmail}
+                disabled={isLoading || !email.trim()}
+                className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                {isLoading ? 'Sending...' : 'Send Email'}
+              </button>
+            </div>
             {message && (
               <p
-                className={`mt-2 text-sm ${message.includes('Error') ? 'text-red-500' : 'text-green-500'
+                className={`mt-2 text-sm ${message.includes('Error') || message.includes('Please')
+                  ? 'text-red-500'
+                  : 'text-green-500'
                   }`}
               >
                 {message}
