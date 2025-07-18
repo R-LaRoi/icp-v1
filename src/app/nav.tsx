@@ -6,14 +6,12 @@ import Link from 'next/link'
 
 export const Navigation = (): React.ReactNode => {
 
-
   return (
     <div className="fixed top-0 left-0 right-0  h-[70px] p-4 z-10">
       <ul className="flex justify-between">
         <div>
           <Link href="/">
             <li className="mr-3 pb-8">
-
               <p className="mx-2 text-2xl 
               text-stone-300 ">ICP</p>
 

@@ -3,8 +3,6 @@ import { selfAssesmentQuestions } from '../dataQuestions'
 import { useState } from 'react'
 
 
-
-
 let selfQ = selfAssesmentQuestions
 
 export function QOne({ selectedAnswer }: { selectedAnswer: (text: string) => void }) {

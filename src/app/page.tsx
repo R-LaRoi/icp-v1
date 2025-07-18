@@ -1,13 +1,12 @@
 
-import {IcpHome} from './icpHome/icpHome'
-
+import { IcpHome } from './icpHome/icpHome'
 
 
 
 export default function Home() {
   return (
 
-<IcpHome />
+    <IcpHome />
 
   );
 }

@@ -1,9 +1,13 @@
 'use client';
 import React from 'react';
 import '../Animation/animation.css';
+import { div } from 'framer-motion/client';
 
 export const Animation = () => {
   return (
+
+
+
     <div className="section">
       <div className="container">
         <div className="circle-wrapper">
