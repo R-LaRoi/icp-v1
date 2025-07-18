@@ -20,6 +20,7 @@
     "framer-motion": "^12.4.7",
     "gsap": "^3.12.5",
     "next": "^14.2.24",
+    "next-auth": "^4.24.11",
     "node-mailjet": "^6.0.6",
     "nodemailer": "^6.10.0",
     "puppeteer": "^24.3.0",
