@@ -101,10 +101,14 @@ const sendEmail = async (options: MailjetEmailOptions): Promise<void> => {
 };
 
 export async function POST(request: Request) {
+  console.log('API route called');
+
   try {
     const { email, data } = await request.json();
+    console.log('Request data:', { email: email ? 'provided' : 'missing', dataKeys: data ? Object.keys(data) : 'no data' });
 
     if (!email) {
+      console.log('Email validation failed');
       return NextResponse.json({ message: 'Email is required' }, { status: 400 });
     }
 
@@ -127,11 +131,14 @@ export async function POST(request: Request) {
       }, { status: 500 });
     }
 
-    console.log('Generating PDF...');
+    console.log('Environment variables check passed');
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+    console.log('Starting PDF generation...');
+
     const pdfBuffer = await generatePDF(data);
     console.log('PDF generated successfully, size:', pdfBuffer.length, 'bytes');
 
-    console.log('Sending email...');
+    console.log('Starting email sending...');
     await sendEmail({
       apiKey: process.env.MAILJET_API_KEY!,
       secretKey: process.env.MAILJET_SECRET_KEY!,
@@ -144,13 +151,23 @@ export async function POST(request: Request) {
       attachmentContent: pdfBuffer,
     });
 
+    console.log('Email sent successfully');
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
   } catch (error: any) {
-    console.error('Error in POST handler:', error);
+    console.error('=== DETAILED ERROR LOG ===');
+    console.error('Error type:', typeof error);
+    console.error('Error name:', error?.name);
+    console.error('Error message:', error?.message);
+    console.error('Error stack:', error?.stack);
+    console.error('Full error object:', error);
+    console.error('========================');
+
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return NextResponse.json({
       message: 'Error processing request',
       error: errorMessage,
+      errorType: typeof error,
+      errorName: error?.name,
       stack: error instanceof Error ? error.stack : undefined
     }, { status: 500 });
   }

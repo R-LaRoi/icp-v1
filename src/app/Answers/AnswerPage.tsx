@@ -25,6 +25,8 @@ export default function AnswerPage({ data }: { data: SelfAssesmentData }) {
     return emailRegex.test(email);
   };
 
+
+
   // Handle sending email and saving to database
   const handleSendEmail = async () => {
     if (!email.trim()) {
@@ -47,6 +49,26 @@ export default function AnswerPage({ data }: { data: SelfAssesmentData }) {
         ...data,
         submittedAt: new Date(),
       });
+
+
+      try {
+        const response = await fetch('/api/sendEmail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, data })
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error('Server error:', errorData);
+          throw new Error(errorData.message || 'Server error');
+        }
+
+        const result = await response.json();
+        console.log('Success:', result);
+      } catch (error) {
+        console.error('Request failed:', error);
+      }
 
       // Send email with PDF attachment
       const response = await fetch('/api/sendEmail', {
