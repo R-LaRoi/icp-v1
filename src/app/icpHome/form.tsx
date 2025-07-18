@@ -101,7 +101,6 @@ export const MainForm = (): React.ReactNode => {
             </button>
           </form>
 
-
         )}
       </div>
     </>
