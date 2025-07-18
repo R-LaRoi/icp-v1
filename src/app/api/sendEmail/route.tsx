@@ -1,59 +1,50 @@
 import { NextResponse } from 'next/server';
-import puppeteer from 'puppeteer-core';
-import chromium from '@sparticuz/chromium';
 import Mailjet from 'node-mailjet';
 
-const generatePDF = async (data: Record<string, any>): Promise<Buffer> => {
-  let browser: any;
-  try {
-    let htmlContent = '<h1>Your Self-Assessment Results:</h1>';
-    if (data) {
-      Object.entries(data).forEach(([key, value]) => {
-        htmlContent += `<p><strong>${key}:</strong> ${Array.isArray(value) ? value.join(', ') : String(value)}</p>`;
-      });
-    } else {
-      htmlContent += '<p>No assessment data available.</p>';
-    }
+interface SelfAssesmentData {
+  introspective: string;
+  strengths: string;
+  wkExp_values: string;
+  motivation: string;
+  next_career: string;
+  dream_acc: string;
+  career_concerns: string;
+  industry_pref: string;
+}
 
-    // Configure for serverless environment
-    const isDev = process.env.NODE_ENV === 'development';
+const generateEmailHtmlContent = (data: SelfAssesmentData): string => {
+  let htmlContent = `
+    <div style="font-family: 'Inter', sans-serif; padding: 20px; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <h1 style="color: #4A00B0; text-align: center; margin-bottom: 30px;">Your Self-Assessment Results:</h1>
+  `;
 
-    if (isDev) {
-      // Local development - use regular puppeteer
-      const puppeteerRegular = await import('puppeteer');
-      browser = await puppeteerRegular.default.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      });
-    } else {
-      // Production/Vercel - use puppeteer-core with chromium
-      browser = await puppeteer.launch({
-        args: chromium.args,
-        defaultViewport: {
-          width: 1920,
-          height: 1080,
-        },
-        executablePath: await chromium.executablePath(),
-        headless: true,
-      });
-    }
+  if (data) {
+    const displayTitles: Record<keyof SelfAssesmentData, string> = {
+      introspective: "Your Introspection",
+      strengths: "Your Strengths",
+      wkExp_values: "Core Values & Work Experience",
+      motivation: "Your Motivation",
+      next_career: "What's Next for Your Career?",
+      dream_acc: "Celebrating Your Dream Accomplishment",
+      career_concerns: "Career Concerns & Challenges",
+      industry_pref: "Your Industry Preferences",
+    };
 
-    const page = await browser.newPage();
-    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-    const pdfUint8Array = await page.pdf({
-      format: 'A4',
-      printBackground: true,
+    Object.entries(data).forEach(([key, value]) => {
+      const title = displayTitles[key as keyof SelfAssesmentData] || key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+      htmlContent += `
+        <h2 style="color: #6A00FF; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 25px;">${title}:</h2>
+        <p style="margin-bottom: 10px; line-height: 1.6;">${Array.isArray(value) ? value.join(', ') : String(value)}</p>
+      `;
     });
-
-    return Buffer.from(pdfUint8Array);
-  } catch (error: any) {
-    console.error('Error generating PDF with Puppeteer:', error);
-    throw new Error(`PDF generation failed: ${error?.message || 'Unknown error'}`);
-  } finally {
-    if (browser) {
-      await browser.close();
-    }
+  } else {
+    htmlContent += '<p>No assessment data available.</p>';
   }
+  htmlContent += `
+      <p style="margin-top: 30px; text-align: center; color: #777;">Thank you for completing your self-assessment!</p>
+    </div>
+  `;
+  return htmlContent;
 };
 
 interface MailjetEmailOptions {
@@ -64,8 +55,7 @@ interface MailjetEmailOptions {
   toEmail: string;
   subject: string;
   textPart: string;
-  attachmentFilename: string;
-  attachmentContent: Buffer;
+  htmlPart: string;
 }
 
 const sendEmail = async (options: MailjetEmailOptions): Promise<void> => {
@@ -82,37 +72,31 @@ const sendEmail = async (options: MailjetEmailOptions): Promise<void> => {
           To: [{ Email: options.toEmail }],
           Subject: options.subject,
           TextPart: options.textPart,
-          Attachments: [
-            {
-              ContentType: 'application/pdf',
-              Filename: options.attachmentFilename,
-              Base64Content: options.attachmentContent.toString('base64'),
-            },
-          ],
+          HtmlPart: options.htmlPart,
         },
       ],
     });
 
-    console.log('Email sent successfully via Mailjet:', result.body);
+    console.log('Mailjet: Email sent successfully. Response status:', result.response.status);
   } catch (error: any) {
-    console.error('Mailjet error details:', error);
-    throw new Error(`Email sending failed: ${error?.message || 'Unknown error'}`);
+    console.error('Mailjet: Error sending email via Mailjet:', error);
+    if (error.statusCode) console.error('Mailjet: Status Code:', error.statusCode);
+    if (error.response && error.response.body && error.response.body.Messages) {
+      console.error('Mailjet: Error Messages:', JSON.stringify(error.response.body.Messages, null, 2));
+    }
+    throw new Error(`Email sending failed: ${error?.message || 'Unknown Mailjet error'}.`);
   }
 };
 
 export async function POST(request: Request) {
-  console.log('API route called');
-
   try {
-    const { email, data } = await request.json();
-    console.log('Request data:', { email: email ? 'provided' : 'missing', dataKeys: data ? Object.keys(data) : 'no data' });
+    const { email, data }: { email: string; data: SelfAssesmentData } = await request.json();
 
     if (!email) {
-      console.log('Email validation failed');
+      console.log('API Route: Email validation failed: Email is required.');
       return NextResponse.json({ message: 'Email is required' }, { status: 400 });
     }
 
-    // Check all required environment variables
     const requiredEnvVars = {
       MAILJET_API_KEY: process.env.MAILJET_API_KEY,
       MAILJET_SECRET_KEY: process.env.MAILJET_SECRET_KEY,
@@ -124,21 +108,15 @@ export async function POST(request: Request) {
       .map(([key]) => key);
 
     if (missingVars.length > 0) {
-      console.error('Missing environment variables:', missingVars);
+      console.error('API Route: Missing environment variables:', missingVars.join(', '));
       return NextResponse.json({
-        message: 'Server configuration error',
+        message: 'Server configuration error: Missing environment variables',
         missingVars
       }, { status: 500 });
     }
 
-    console.log('Environment variables check passed');
-    console.log('NODE_ENV:', process.env.NODE_ENV);
-    console.log('Starting PDF generation...');
+    const htmlContent = generateEmailHtmlContent(data);
 
-    const pdfBuffer = await generatePDF(data);
-    console.log('PDF generated successfully, size:', pdfBuffer.length, 'bytes');
-
-    console.log('Starting email sending...');
     await sendEmail({
       apiKey: process.env.MAILJET_API_KEY!,
       secretKey: process.env.MAILJET_SECRET_KEY!,
@@ -146,23 +124,21 @@ export async function POST(request: Request) {
       fromName: 'Your Career Plan',
       toEmail: email,
       subject: 'Your Self-Assessment Results',
-      textPart: 'Please find your self-assessment results attached.',
-      attachmentFilename: 'self-assessment-results.pdf',
-      attachmentContent: pdfBuffer,
+      textPart: 'Please find your self-assessment results below.',
+      htmlPart: htmlContent,
     });
 
-    console.log('Email sent successfully');
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
   } catch (error: any) {
-    console.error('=== DETAILED ERROR LOG ===');
-    console.error('Error type:', typeof error);
-    console.error('Error name:', error?.name);
-    console.error('Error message:', error?.message);
-    console.error('Error stack:', error?.stack);
-    console.error('Full error object:', error);
-    console.error('========================');
+    console.error('API Route: === DETAILED ERROR LOG ===');
+    console.error('API Route: Error type:', typeof error);
+    console.error('API Route: Error name:', error?.name);
+    console.error('API Route: Error message:', error?.message);
+    console.error('API Route: Error stack:', error?.stack);
+    console.error('API Route: Full error object:', JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
+    console.error('API Route: ========================');
 
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred on server.';
     return NextResponse.json({
       message: 'Error processing request',
       error: errorMessage,
