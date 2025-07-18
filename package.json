@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.19",
     "@react-pdf/renderer": "^4.2.2",
+    "@sparticuz/chromium": "^138.0.1",
     "@vercel/postgres": "^0.10.0",
     "axios": "^1.7.9",
     "dotenv": "^17.2.0",
