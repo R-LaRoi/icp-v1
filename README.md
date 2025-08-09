@@ -21,7 +21,8 @@ This application collects user input through a multi-step questionnaire and dyna
 - **State Management**: React `useState` hooks for managing form data and navigation.
 - **Styling**: Tailwind CSS for responsive and modern styling.
 - **Image Optimization**: Next.js `Image` component for optimized image loading.
-- **Firbease for data collection
+- **Firebase**: For data collection and storage. 
+
 
 ## Project Structure
 
